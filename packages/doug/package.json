@@ -1,5 +1,5 @@
 {
-  "name": "build-system",
+  "name": "doug",
   "version": "0.0.1",
   "bin": {
     "bs": "./cli.js"

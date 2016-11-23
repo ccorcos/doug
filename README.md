@@ -1,4 +1,4 @@
-# Build System
+# Doug 🔨
 
 The here is to build a modular build system which you can put together into your own "zero-configuration" build system to use in your projects simply by installing it.
 
@@ -31,6 +31,8 @@ The here is to build a modular build system which you can put together into your
     - cmd-test-webdriver
     - cmd-deploy-git
     - cmd-deploy-aws
+
+  - basic eslint for simple bugs
 
 
     config + options => webpackConfig => command
