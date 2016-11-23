@@ -19,6 +19,14 @@ program
   .option('--profile', 'output the webpack stats.json file for analysis')
   .action(commands.build)
 
+program
+  .command('deploy-git')
+  .description('deploy project using git')
+  .option('--repo <url>', 'deploy to a repo other than the current repo')
+  .option('--remote <remote>', 'deploy a git remote other than origin')
+  .option('--branch <branch>', 'deploy to a branch other than gh-pages')
+  .action(commands.deployGit)
+
 // program
 //   .command('test')
 //   .description('')

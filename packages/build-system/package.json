@@ -19,6 +19,7 @@
     "extended-define-webpack-plugin": "^0.1.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "gh-pages": "^0.12.0",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.1",
     "ignore-loader": "^0.1.2",

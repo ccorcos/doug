@@ -1,5 +1,4 @@
 - modular build system
-  - build distribution files
   - deploy to github pages
   - run some tests
   - examples

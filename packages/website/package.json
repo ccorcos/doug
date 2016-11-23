@@ -10,6 +10,7 @@
   },
   "scripts": {
     "dev": "node_modules/build-system/cli.js dev",
-    "build": "node_modules/build-system/cli.js build"
+    "build": "node_modules/build-system/cli.js build",
+    "deploy": "node_modules/build-system/cli.js deploy-git"
   }
 }
