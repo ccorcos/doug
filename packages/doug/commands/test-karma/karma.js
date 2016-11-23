@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (config, webpackConfig) => {
+module.exports = (config, options, webpackConfig) => {
   return {
     basePath: '',
     frameworks: ['mocha'],

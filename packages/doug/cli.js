@@ -2,13 +2,12 @@
 'use strict'
 
 const program = require('commander')
-const commands = require('./commands')
 
 program
   .command('dev')
   .description('start a development server')
   .option('--build-css', 'build css files')
-  .action(commands.dev)
+  .action(require('./commands/dev'))
 
 program
   .command('build')
@@ -17,15 +16,15 @@ program
   .option('--root-url <url>', 'the base url for the CDN where the assets live')
   .option('--human', 'do not minify the source files')
   .option('--profile', 'output the webpack stats.json file for analysis')
-  .action(commands.build)
+  .action(require('./commands/build'))
 
 program
-  .command('deploy-git')
+  .command('deploy')
   .description('deploy project using git')
   .option('--repo <url>', 'deploy to a repo other than the current repo')
   .option('--remote <remote>', 'deploy a git remote other than origin')
   .option('--branch <branch>', 'deploy to a branch other than gh-pages')
-  .action(commands.deployGit)
+  .action(require('./commands/deploy-git'))
 
 // program
 //   .command('deploy-s3')
@@ -35,22 +34,13 @@ program
 //   .action(commands.deployS3)
 
 program
-  .command('test-karma')
+  .command('test')
   .description('run unit unit tests with karma and mocha')
-  .action(commands.testKarma)
+  .action(require('./commands/test-karma'))
 
-// program
-//   .command('release <semver>')
-//   .description('')
-//   .action(() => {
-//
-//   })
-
-// program
-//   .command('deploy <environment>')
-//   .description('')
-//   .action(() => {
-//
-//   })
+program
+  .command('release <semver>')
+  .description('bump, commit, tag, and push a new release')
+  .action(require('./commands/release'))
 
 program.parse(process.argv)
