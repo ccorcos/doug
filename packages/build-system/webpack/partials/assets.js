@@ -7,7 +7,7 @@ module.exports = (config) => ({
       // assets get inlined if < 8kB otherwise linked with a url
       {
         test: /\.(svg|png|jpe?g|gif)$/,
-        loaders: config.minify
+        loaders: config.compress
                ? ['url?limit=8182&name=[name]-[hash].[ext]', 'image-webpack?bypassOnDebug&optimizationLevel=7']
                : ['url?limit=8182&name=[name]-[hash].[ext]'],
       },

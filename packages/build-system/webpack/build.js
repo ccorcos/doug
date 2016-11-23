@@ -17,32 +17,34 @@ module.exports = (config, options) => {
       buildCss: options.buildCss,
     }),
     require('./partials/assets')({
-      compress: false,
+      compress: true,
     }),
     require('./partials/app')({
       html: config.html,
     }),
-    require('./partials/hmr'),
+    options.human ? {} : require('./partials/minify'),
+    require('./partials/optimize'),
     require('./partials/define')(
-      { process: { env: { NODE_ENV: 'dev' } } }
+      { process: { env: { NODE_ENV: 'production' } } }
     ),
     {
-      devtool: 'cheap-module-eval-source-map',
-      // inject  webpack-hot-middleware into the entry points
+      devtool: 'hidden-source-map',
+      profile: options.profile,
       entry: R.map(
         jsFile => [
-          require.resolve('webpack-hot-middleware/client'),
           require.resolve('babel-polyfill'),
           require.resolve('whatwg-fetch'),
           jsFile,
         ],
         config.entry
       ),
-      // output to a dev folder we can serve static from
+      // output to the distribution folder
       output: {
-        path: path.join(config.projectRoot, 'dev'),
-        filename: '[name].js',
-        publicPath: '/',
+        path: config.projectDist,
+        // the public path to all CDN assets that platform will inject
+        publicPath: options.rootUrl || '',
+        // include the chunkhash for the file for long-term caching
+        filename: '[name]-[chunkhash].js',
       },
     }
   )

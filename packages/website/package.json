@@ -9,6 +9,7 @@
     "react-dom": "^15.4.1"
   },
   "scripts": {
-    "start": "node_modules/build-system/cli.js dev"
+    "dev": "node_modules/build-system/cli.js dev",
+    "build": "node_modules/build-system/cli.js build"
   }
 }

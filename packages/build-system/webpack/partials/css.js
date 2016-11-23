@@ -22,7 +22,7 @@ module.exports = (config) => {
     module: {
       // use the style loader unless we want to build css into a static file
       loaders: [
-        config['build-css'] ? {
+        config.buildCss ? {
           test: /\.css$/,
           loader: Css.extract(['css','postcss']),
         } : {
@@ -31,7 +31,7 @@ module.exports = (config) => {
         },
       ]
     },
-    plugins: config['build-css'] ? [Css] : [],
+    plugins: config.buildCss ? [Css] : [],
     postcss: function(webpack) {
       return [
         // order matters!

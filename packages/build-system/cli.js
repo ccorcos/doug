@@ -1,23 +1,8 @@
 #!/usr/bin/env node
 'use strict'
 
-const path = require('path')
 const program = require('commander')
-
-// find the project config file
-const projectRoot = process.env.PWD
-const config = require(path.join(projectRoot, 'config'))
-config.projectRoot = projectRoot
-config.projectName = require(path.join(projectRoot, 'package.json')).name
-
-const commands = {
-  dev: (options) => {
-    require('./webpack/server')(
-      config,
-      require('./webpack/dev')(config, options)
-    )
-  },
-}
+const commands = require('./commands')
 
 program
   .command('dev')
@@ -25,15 +10,17 @@ program
   .option('--build-css', 'build css files')
   .action(commands.dev)
 
-// program
-//   .command('test')
-//   .description('')
-//   .action(() => {
-//
-//   })
+program
+  .command('build')
+  .description('build distribution assets')
+  .option('--build-css', 'build css files')
+  .option('--root-url <url>', 'the base url for the CDN where the assets live')
+  .option('--human', 'do not minify the source files')
+  .option('--profile', 'output the webpack stats.json file for analysis')
+  .action(commands.build)
 
 // program
-//   .command('build')
+//   .command('test')
 //   .description('')
 //   .action(() => {
 //
