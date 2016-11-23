@@ -5,7 +5,7 @@ const config = require('./config')
 
 const dev = (options) => {
   const webpackConfig = require('./webpack/dev')(config, options)
-  require('./webpack/server')(config, webpackConfig)
+  require('./server')(config, webpackConfig)
 }
 
 const runWebpack = (webpackConfig) => {
@@ -63,12 +63,39 @@ const deployGit = (options) => {
     remote: options.remote,
     branch: options.branch,
     tag: config.projectVersion,
-    messge: config.projectVersion,
+    message: config.projectVersion,
+    logger: console.log,
   })
+}
+
+const runKarma = (karmaConfig) => {
+  // create the karma server for running tests
+  const Server = require('karma').Server
+  return new Promise((resolve, reject) => {
+    const server = new Server(karmaConfig, function(exitCode) {
+      console.log('Karma has exited with ' + exitCode)
+      if (exitCode === 1) {
+        reject(exitCode)
+      } else {
+        resolve(exitCode)
+      }
+      // TODO: fix this
+      process.exit(exitCode)
+    })
+    server.start()
+  })
+}
+
+const testKarma = (options) => {
+  // generate the karma configuration
+  const webpackConfig = require('./webpack/test')(config, options)
+  const karmaConfig = require('./karma')(config, webpackConfig)
+  return runKarma(karmaConfig)
 }
 
 module.exports = {
   dev,
   build,
   deployGit,
+  testKarma,
 }

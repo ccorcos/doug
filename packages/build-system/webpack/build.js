@@ -1,9 +1,7 @@
 'use strict'
 
 const path = require('path')
-const webpack = require('webpack')
 const merge = require('webpack-merge')
-const R = require('ramda')
 
 module.exports = (config, options) => {
   return merge(
@@ -30,14 +28,7 @@ module.exports = (config, options) => {
     {
       devtool: 'hidden-source-map',
       profile: options.profile,
-      entry: R.map(
-        jsFile => [
-          require.resolve('babel-polyfill'),
-          require.resolve('whatwg-fetch'),
-          jsFile,
-        ],
-        config.entry
-      ),
+      entry: config.entry,
       // output to the distribution folder
       output: {
         path: config.projectDist,

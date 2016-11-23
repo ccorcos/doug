@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     index: path.resolve('.', 'src', 'index.js'),
   },
+  test: path.resolve('.', 'test.js'),
   api: (app) => {
 
   },

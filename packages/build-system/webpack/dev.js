@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('path')
-const webpack = require('webpack')
 const merge = require('webpack-merge')
 const R = require('ramda')
 
@@ -32,8 +31,6 @@ module.exports = (config, options) => {
       entry: R.map(
         jsFile => [
           require.resolve('webpack-hot-middleware/client'),
-          require.resolve('babel-polyfill'),
-          require.resolve('whatwg-fetch'),
           jsFile,
         ],
         config.entry

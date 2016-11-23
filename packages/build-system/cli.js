@@ -28,11 +28,16 @@ program
   .action(commands.deployGit)
 
 // program
-//   .command('test')
-//   .description('')
-//   .action(() => {
-//
-//   })
+//   .command('deploy-s3')
+//   .description('deploy project to aws s3')
+//   .option('--bucket <bucket>', 'aws bucket id')
+//   .option('--secret <secret>', 'aws bucket secret')
+//   .action(commands.deployS3)
+
+program
+  .command('test-karma')
+  .description('run unit unit tests with karma and mocha')
+  .action(commands.testKarma)
 
 // program
 //   .command('release <semver>')

@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "node_modules/build-system/cli.js dev",
     "build": "node_modules/build-system/cli.js build",
-    "deploy": "node_modules/build-system/cli.js deploy-git"
+    "deploy": "node_modules/build-system/cli.js deploy-git",
+    "test": "node_modules/build-system/cli.js test-karma"
   }
 }
