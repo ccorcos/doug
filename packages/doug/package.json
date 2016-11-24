@@ -1,9 +1,6 @@
 {
   "name": "doug",
   "version": "0.0.1",
-  "bin": {
-    "bs": "./cli.js"
-  },
   "devDependencies": {
     "assert": "^1.4.1",
     "babel": "^6.5.2",

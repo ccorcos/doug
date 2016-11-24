@@ -4,16 +4,22 @@ The here is to build a modular build system which you can put together into your
 
 # TODO
 
+- init command
+- all partials and commands live in one place
+
+- scenarios
+  - doug-app
+  - doug-lib
+  - doug-react-native
+
+
+
 - more modular
   - modularize first by commands
   - merge all configs and options together
   - put webpack config inside config that gets passed to command
   - add hooks / webpack overrides
 
-- configs can configure cli args...
-- but first build one thing, then break it down in subsequent versions
-
-- configs and options should all be interchangeable
 
 - modular build system
   - test it out

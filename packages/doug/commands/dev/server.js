@@ -13,7 +13,7 @@ app.use(bodyParser.json({limit: '50mb'}))
 // some basic logging for the dev server
 app.use(morgan('dev'))
 
-module.exports = (config, webpackConfig) => {
+module.exports = (config, options, webpackConfig) => {
 
   const compiler = webpack(webpackConfig)
 

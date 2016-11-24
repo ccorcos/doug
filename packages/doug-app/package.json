@@ -1,0 +1,11 @@
+{
+  "name": "doug-app",
+  "version": "0.0.1",
+  "bin": {
+    "doug-app": "./cli.js"
+  },
+  "devDependencies": {
+    "doug": "file:../doug",
+    "webpack-merge": "^0.17.0"
+  }
+}

@@ -8,14 +8,14 @@ module.exports = (config, options) => {
       projectRoot: config.projectRoot,
       projectName: config.projectName,
     }),
-    require('./partials/istanbul'),
-    require('./partials/css')({
+    require('doug/webpack/partials/istanbul'),
+    require('doug/webpack/partials/css')({
       ignore: true,
     }),
-    require('./partials/assets')({
+    require('doug/webpack/partials/assets')({
       minify: false,
     }),
-    require('./partials/define')(
+    require('doug/webpack/partials/define')(
       { process: { env: { NODE_ENV: 'test' } } }
     ),
     {

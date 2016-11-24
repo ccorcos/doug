@@ -1,8 +1,6 @@
 'use strict'
 
 const karma = require('karma')
-const config = require('../../config')
-const makeWebpackConfig = require('../../webpack/test')
 const makeKarmaConfig = require('./karma')
 
 const runKarma = (karmaConfig) => {
@@ -23,9 +21,12 @@ const runKarma = (karmaConfig) => {
   })
 }
 
-module.exports = (options) => {
-  // generate the karma configuration
-  const webpackConfig = makeWebpackConfig(config, options)
-  const karmaConfig = makeKarmaConfig(config, options, webpackConfig)
-  return runKarma(karmaConfig)
+module.exports = {
+  options: (program) => {
+    return program
+  },
+  action: (config, options, webpackConfig) => {
+    const karmaConfig = makeKarmaConfig(config, options, webpackConfig)
+    return runKarma(karmaConfig)
+  },
 }
