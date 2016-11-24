@@ -1,0 +1,38 @@
+# To Do
+
+- submit some PRs
+  - lerna with yarn
+  - yarn .bin not working when linked
+- scenarios
+  - doug-lib
+  - doug-react-native
+- more support
+  - eslint loader
+  - minify html
+  - serve should return a promise since it can exit
+    - how can we run a database side-by-side and exit both savely?
+  - webdriver browser tests
+  - ava or jest examples
+  - custom feature flags
+  - deploy s3
+  - generate docs + deploy docs
+- feathers
+  - tooling?
+  - doug middleware
+  - SSR / next.js
+- examples
+  - code splitting on pages directory
+  - async module loading with client-side router
+  - SSR with glamor just like Next.js
+  - app with feathers.js backend / chat application
+    - styleguide, storybook, redux
+    - react native
+  - js/css library module
+- extra
+  - init command
+  - make your own build system using inquirer!
+- CI integrations
+  - travis, circle, browserstack, codeship, jenkins
+- fix
+  - karma coverage not quite right
+  - karma tests wont exit!
