@@ -58,3 +58,38 @@ module.exports = {
 ```
 
 Part of the philosophy here is to create un-opinionated building blocks for creating some typical tools. And ideally, these building blocks can all live within Doug so we can ensure that everything works cohesively together (just like prezto).
+
+## Doug App
+
+```sh
+yarn add --dev doug-app
+```
+
+Create a config file specifying some configurations:
+
+```js
+'use strict'
+
+const path = require('path')
+
+module.exports = {
+  html: path.resolve('.', 'src', 'index.html'),
+  entry: {
+    index: path.resolve('.', 'src', 'index.js'),
+  },
+  test: path.resolve('.', 'test.js'),
+  api: (app) => {
+    // create some mock express routes
+  },
+}
+```
+
+Then add some scripts to your package.json:
+
+```json
+{
+  "scripts": {
+    "dev": "doug-app dev"
+  }
+}
+```
