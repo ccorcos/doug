@@ -6,10 +6,10 @@ const merge = require('webpack-merge')
 
 module.exports = (config) => {
   return merge(
-    require('doug/webpack/partials/babel'),
-    require('doug/webpack/partials/json'),
-    require('doug/webpack/partials/icons'),
-    require('doug/webpack/partials/resolve')({
+    require('doug/webpack/babel'),
+    require('doug/webpack/json'),
+    require('doug/webpack/icons'),
+    require('doug/webpack/resolve')({
       projectRoot: config.projectRoot,
       projectName: config.projectName,
     })

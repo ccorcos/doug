@@ -9,23 +9,23 @@ module.exports = (config, options) => {
       projectRoot: config.projectRoot,
       projectName: config.projectName,
     }),
-    require('doug/webpack/partials/css')({
+    require('doug/webpack/css')({
       projectRoot: config.projectRoot,
       ignore: false,
       buildCss: options.buildCss,
     }),
-    require('doug/webpack/partials/assets')({
+    require('doug/webpack/assets')({
       compress: false,
     }),
-    require('doug/webpack/partials/app')({
+    require('doug/webpack/app')({
       html: config.html,
     }),
-    require('doug/webpack/partials/app-dev')({
+    require('doug/webpack/app-dev')({
       entry: config.entry,
       projectRoot: config.projectRoot,
     }),
-    require('doug/webpack/partials/hmr'),
-    require('doug/webpack/partials/define')(
+    require('doug/webpack/hmr'),
+    require('doug/webpack/define')(
       { process: { env: { NODE_ENV: 'dev' } } }
     )
   )

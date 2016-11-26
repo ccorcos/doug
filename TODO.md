@@ -1,7 +1,15 @@
 # To Do
 
+- eslint loader
+- ava tests
+- jest tests
+- feature flags
+- doug-lib, doug-script
+
+
 - submit some PRs
   - lerna with yarn
+    - https://github.com/lerna/lerna/issues/371
   - yarn .bin not working when linked
 - scenarios
   - doug-lib

@@ -9,26 +9,26 @@ module.exports = (config, options) => {
       projectRoot: config.projectRoot,
       projectName: config.projectName,
     }),
-    require('doug/webpack/partials/css')({
+    require('doug/webpack/css')({
       projectRoot: config.projectRoot,
       ignore: false,
       buildCss: options.buildCss,
     }),
-    require('doug/webpack/partials/assets')({
+    require('doug/webpack/assets')({
       compress: true,
     }),
-    require('doug/webpack/partials/app')({
+    require('doug/webpack/app')({
       html: config.html,
     }),
-    require('doug/webpack/partials/app-build')({
+    require('doug/webpack/app-build')({
       profile: options.profile,
       projectDist: config.projectDist,
       entry: config.entry,
       rootUrl: options.rootUrl,
     }),
-    options.human ? {} : require('doug/webpack/partials/minify'),
-    require('doug/webpack/partials/optimize'),
-    require('doug/webpack/partials/define')(
+    options.human ? {} : require('doug/webpack/minify'),
+    require('doug/webpack/optimize'),
+    require('doug/webpack/define')(
       { process: { env: { NODE_ENV: 'production' } } }
     )
   )
