@@ -1,11 +1,7 @@
 # To Do
 
-- eslint loader
-- ava tests
-- jest tests
 - feature flags
 - doug-lib, doug-script
-
 
 - submit some PRs
   - lerna with yarn

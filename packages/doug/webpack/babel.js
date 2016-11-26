@@ -6,10 +6,8 @@ module.exports = {
       // use react-hot for hot module replacement
       {
         test: /\.js$/,
-        loaders: ['babel'],
-        exclude: [
-          /node_modules/,
-        ],
+        loader: 'babel',
+        exclude: /node_modules/,
       },
     ],
   },

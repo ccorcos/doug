@@ -12,6 +12,8 @@
     "body-parser": "^1.15.2",
     "commander": "^2.9.0",
     "css-loader": "^0.26.0",
+    "eslint": "^3.11.0",
+    "eslint-loader": "^1.6.1",
     "express": "^4.14.0",
     "extended-define-webpack-plugin": "^0.1.2",
     "extract-text-webpack-plugin": "^1.0.1",

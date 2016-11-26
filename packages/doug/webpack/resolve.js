@@ -1,7 +1,7 @@
 'use strict'
 
 const path = require('path')
-const buildSystemRoot = path.resolve(__dirname, '..', '..')
+const buildSystemRoot = path.resolve(__dirname, '..')
 
 module.exports = (config) =>({
   resolve: {

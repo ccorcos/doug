@@ -33,10 +33,10 @@ module.exports = (config, options, webpackConfig) => {
   app.use(express.static(path.join(config.projectRoot, 'dev')))
 
   // HTML5 History
-  app.get('*', function(req, res) {
-    const indexPath = path.join(config.projectRoot, 'dev', 'index.html')
-    res.end(middleware.fileSystem.readFileSync(indexPath))
-  })
+  // app.get('*', function(req, res) {
+  //   const indexPath = path.join(config.projectRoot, 'dev', 'index.html')
+  //   res.end(middleware.fileSystem.readFileSync(indexPath))
+  // })
 
   app.disable('etag');
   const PORT = process.env.PORT || 3000
