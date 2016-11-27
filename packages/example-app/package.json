@@ -1,8 +1,8 @@
 {
   "name": "example-app",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "devDependencies": {
-    "doug-app": "^0.0.1"
+    "doug-app": "^0.1.0"
   },
   "dependencies": {
     "react": "^15.4.1",
