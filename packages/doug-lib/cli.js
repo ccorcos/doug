@@ -3,45 +3,24 @@
 
 const program = require('doug/commander')
 const config = require('doug/config')
-const dev = require('./commands/dev')
-const test = require('doug/commands/test-karma')
-const build = require('doug/commands/build')
-const deploy = require('doug/commands/deploy-git')
+const test = require('doug/commands/test-ava')
+const build = require('doug/commands/build-babel')
 const release = require('doug/commands/release')
 
 program
-  .command('dev')
-  .description('start a development server')
-  .pipe(dev.options)
-  .action((options) => {
-    const webpackConfig = require('./webpack/dev')(config, options)
-    return dev.action(config, options, webpackConfig)
-  })
-
-program
   .command('test')
-  .description('run unit tests with karma, mocha, and jsdom')
+  .description('run unit tests with ava')
   .pipe(test.options)
   .action((options) => {
-    const webpackConfig = require('./webpack/dev')(config, options)
-    return test.action(config, options, webpackConfig)
+    return test.action(config, options)
   })
 
 program
   .command('build')
-  .description('build distribution assets')
+  .description('build distribution assets with babel')
   .pipe(build.options)
   .action((options) => {
-    const webpackConfig = require('./webpack/build')(config, options)
-    return build.action(config, options, webpackConfig)
-  })
-
-program
-  .command('deploy')
-  .description('deploy project using git')
-  .pipe(deploy.options)
-  .action((options) => {
-    return deploy.action(config, options)
+    return build.action(config, options)
   })
 
 program
