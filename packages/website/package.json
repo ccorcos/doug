@@ -2,7 +2,7 @@
   "name": "website",
   "version": "0.0.1",
   "devDependencies": {
-    "doug-app": "file:../doug-app"
+    "doug-app": "^0.0.1"
   },
   "dependencies": {
     "react": "^15.4.1",

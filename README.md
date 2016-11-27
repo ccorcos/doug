@@ -93,3 +93,10 @@ Then add some scripts to your package.json:
   }
 }
 ```
+
+
+## Development
+
+```sh
+npm install --global lerna@prerelease
+```

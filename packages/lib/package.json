@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "./src/index.js",
   "devDependencies": {
-    "doug-lib": "file:../doug-lib"
+    "doug-lib": "^0.0.1"
   },
   "scripts": {
     "build": "node_modules/doug-lib/cli.js build",

@@ -1,17 +1,7 @@
 # To Do
 
-
-- examples
-  - lib
-    - use babel to convert to es5
-    - use ava or jest to run Node.js tests
-  - css-lib
-  - script
-
 - lerna
-  - import package based on absolute path name
-  
-
+  - import package based on absolute path name  
 
 - submit some PRs
   - lerna with yarn
