@@ -1,5 +1,7 @@
 'use strict'
 
+const shell = require('shelljs')
+
 module.exports = {
   options: (program) => {
     return program
