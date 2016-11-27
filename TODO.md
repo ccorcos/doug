@@ -1,7 +1,8 @@
 # To Do
 
-- lerna
-  - import package based on absolute path name  
+- test everything with lerna
+- better readme / documentation
+- lerna publish packages
 
 - submit some PRs
   - lerna with yarn

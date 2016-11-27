@@ -9,10 +9,10 @@
     "react-dom": "^15.4.1"
   },
   "scripts": {
-    "dev": "node_modules/doug-app/cli.js dev",
-    "build": "node_modules/doug-app/cli.js build",
-    "deploy": "node_modules/doug-app/cli.js deploy",
-    "test": "node_modules/doug-app/cli.js test",
-    "release": "node_modules/doug-app/cli.js release"
+    "start": "doug-app dev",
+    "build": "doug-app build",
+    "deploy": "doug-app deploy",
+    "test": "doug-app test",
+    "release": "doug-app release"
   }
 }

@@ -6,8 +6,8 @@
     "doug-lib": "^0.0.1"
   },
   "scripts": {
-    "build": "node_modules/doug-lib/cli.js build",
-    "test": "node_modules/doug-lib/cli.js test",
-    "release": "node_modules/doug-lib/cli.js release"
+    "build": "doug-lib build",
+    "test": "doug-lib build && doug-lib test",
+    "release": "doug-lib release"
   }
 }

@@ -99,4 +99,6 @@ Then add some scripts to your package.json:
 
 ```sh
 npm install --global lerna@prerelease
+git clean -fXd
+lerna bootstrap
 ```

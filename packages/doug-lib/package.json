@@ -1,6 +1,9 @@
 {
   "name": "doug-lib",
   "version": "0.0.1",
+  "bin": {
+    "doug-lib": "./cli.js"
+  },
   "devDependencies": {
     "doug": "^0.0.1"
   }
