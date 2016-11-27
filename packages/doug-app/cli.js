@@ -3,7 +3,7 @@
 
 const program = require('doug/commander')
 const config = require('doug/config')
-const dev = require('./commands/dev')
+const dev = require('doug/commands/dev')
 const test = require('doug/commands/test-karma')
 const build = require('doug/commands/build')
 const deploy = require('doug/commands/deploy-git')

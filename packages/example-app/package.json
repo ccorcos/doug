@@ -1,5 +1,5 @@
 {
-  "name": "website",
+  "name": "example-app",
   "version": "0.0.1",
   "devDependencies": {
     "doug-app": "^0.0.1"

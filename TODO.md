@@ -1,6 +1,5 @@
 # To Do
 
-- test everything with lerna
 - better readme / documentation
 - lerna publish packages
 

@@ -1,8 +1,15 @@
 # Doug 🔨🔨🔨
 
-Doug is a modular build system that allows you to customize and build your own zero-configuration CLI tools that are tuned for your workflow.
+Doug is a modular build system that lets you to build your own zero-configuration commandline tools.
 
-At it's core, Doug is just a pattern for building CLI tools using Commander.js that makes it easy to customize and extend into your own tools.
+At it's core, Doug is just a pattern for building commandline tools using [Commander.js](https://github.com/tj/commander.js) that is easy to customize and extend.
+
+
+- doug/commander
+- doug/config
+- commands
+
+
 
 A command looks like this:
 
