@@ -1,8 +1,12 @@
 # Doug 🔨🔨🔨
 
-Doug is a modular build system that lets you to build your own zero-configuration commandline tools. What that means is you should only ever have one devDependency every again and that's the Doug tool you're using to build your project.
+Doug is a modular build system that lets you to build your own zero-configuration commandline tools. That means you should only ever have one devDependency in your project and that's the Doug tool you're using to build your project.
 
 At it's core, Doug is just a pattern for building commandline tools using [Commander.js](https://github.com/tj/commander.js) that is easy to customize and extend.
+
+## Table Of Contents
+
+- [create an app using `doug-app`](./packages/doug-app/README.md)
 
 ## How it works
 
