@@ -1,7 +1,7 @@
 {
   "name": "doug",
   "version": "0.1.0",
-  "devDependencies": {
+  "dependencies": {
     "assert": "^1.4.1",
     "ava": "^0.17.0",
     "babel": "^6.5.2",
