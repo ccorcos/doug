@@ -5,8 +5,8 @@ const shell = require('shelljs')
 const modulesDir = `${__dirname}/../node_modules`
 
 module.exports = {
-  options: (program) => {
-    return program
+  options: (vorpal) => {
+    return vorpal
   },
   action: (config, options) => {
     return shell.exec([

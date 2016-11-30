@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 var compose = exports.compose = function compose(a) {
   return function (b) {
     return function (c) {
-      return a(b(b));
+      return a(b(c));
     };
   };
 };

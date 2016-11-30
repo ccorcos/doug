@@ -49,4 +49,10 @@ module.exports = (config, options, webpackConfig) => {
     }
     console.log('Listening at http://localhost:' + PORT)
   })
+
+  return new Promise((resolve, reject) => {
+    process.on('SIGINT', function() {
+      resolve()
+    })
+  })
 }

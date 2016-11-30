@@ -22,8 +22,8 @@ const runKarma = (karmaConfig) => {
 }
 
 module.exports = {
-  options: (program) => {
-    return program
+  options: (vorpal) => {
+    return vorpal
   },
   action: (config, options, webpackConfig) => {
     const karmaConfig = makeKarmaConfig(config, options, webpackConfig)

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 'use strict'
 
-const program = require('doug/commander')
+const vorpal = require('doug/vorpal')
 const config = require('doug/config')
 
-require('./cli/test')(program, config)
-require('./cli/build')(program, config)
-require('./cli/release')(program, config)
+require('./cli/test')(vorpal, config)
+require('./cli/build')(vorpal, config)
+require('./cli/release')(vorpal, config)
 
-program.parse(process.argv)
+vorpal.parse(process.argv)

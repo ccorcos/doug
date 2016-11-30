@@ -3,8 +3,8 @@
 const shell = require('shelljs')
 
 module.exports = {
-  options: (program) => {
-    return program
+  options: (vorpal) => {
+    return vorpal
   },
   action: (config, semver, options) => {
     if (!semver.match(/(patch|minor|major)/)) {

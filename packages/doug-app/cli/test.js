@@ -2,13 +2,13 @@
 
 const test = require('doug/commands/test-karma')
 
-module.exports = (program, config) => {
-  program
+module.exports = (vorpal, config) => {
+  vorpal
     .command('test')
     .description('run unit tests with karma, mocha, and jsdom')
-    .pipe(test.options)
-    .action((options) => {
+    .use(test.options)
+    .action(({options}) => {
       const webpackConfig = require('../webpack/dev')(config, options)
-      return test.action(config, options, webpackConfig)
+      return Promise.resolve(test.action(config, options, webpackConfig))
     })
 }

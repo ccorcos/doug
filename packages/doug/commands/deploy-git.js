@@ -15,8 +15,8 @@ const publishGit = (dir, options) => {
 }
 
 module.exports = {
-  options: (program) => {
-    return program
+  options: (vorpal) => {
+    return vorpal
       .option('--repo <url>', 'deploy to a repo other than the current repo')
       .option('--remote <remote>', 'deploy a git remote other than origin')
       .option('--branch <branch>', 'deploy to a branch other than gh-pages')

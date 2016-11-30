@@ -18,8 +18,8 @@ const runWebpack = (webpackConfig) => {
 }
 
 module.exports = {
-  options: (program) => {
-    return program
+  options: (vorpal) => {
+    return vorpal
       .option('--build-css', 'build css files')
       .option('--root-url <url>', 'the base url for the CDN where the assets live')
       .option('--human', 'do not minify the source files')

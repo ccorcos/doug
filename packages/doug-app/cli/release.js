@@ -2,12 +2,12 @@
 
 const release = require('doug/commands/release')
 
-module.exports = (program, config) => {
-  program
+module.exports = (vorpal, config) => {
+  vorpal
     .command('release <semver>')
     .description('bump, commit, tag, and push a new release')
-    .pipe(release.options)
-    .action((semver, options) => {
-      return release.action(config, semver, options)
+    .use(release.options)
+    .action(({semver, options}) => {
+      return Promise.resolve(release.action(config, semver, options))
     })
 }

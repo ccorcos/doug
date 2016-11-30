@@ -3,8 +3,8 @@
 const shell = require('shelljs')
 
 module.exports = {
-  options: (program) => {
-    return program
+  options: (vorpal) => {
+    return vorpal
   },
   action: (config, options) => {
     return shell.exec(`${__dirname}/../node_modules/.bin/ava ${config.test}`)

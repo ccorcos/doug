@@ -1,8 +1,8 @@
 'use strict'
 
 module.exports = {
-  options: (program) => {
-    return program
+  options: (vorpal) => {
+    return vorpal
       .option('--bucket <bucket>', 'aws bucket id')
       .option('--secret <secret>', 'aws bucket secret')
   },
