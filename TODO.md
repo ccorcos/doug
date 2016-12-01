@@ -1,29 +1,20 @@
 # To Do
 
-- hello doug examples
+- documentation and examples
 
-- better readme / documentation
-  - whats the point of doug, doug-app, and doug-lib
-  - how do they work? how do you use them
-  - how do you extend them?
-
-- better readme / documentation
 - lerna publish packages
-
 - submit some PRs
   - lerna with yarn
     - https://github.com/lerna/lerna/issues/371
   - yarn .bin not working when linked
 - scenarios
-  - doug-lib
   - doug-react-native
 - more support
-  - eslint loader
+  - gracefully close HTTP server: Error: read EIO?
+  - eslint loader: Sha1 error?
   - minify html
-  - serve should return a promise since it can exit
-    - how can we run a database side-by-side and exit both savely?
   - webdriver browser tests
-  - ava or jest examples
+  - jest examples
   - custom feature flags
   - deploy s3
   - generate docs + deploy docs
@@ -44,6 +35,3 @@
   - make your own build system using inquirer!
 - CI integrations
   - travis, circle, browserstack, codeship, jenkins
-- fix
-  - karma coverage not quite right
-  - karma tests wont exit!

@@ -14,8 +14,6 @@ const runKarma = (karmaConfig) => {
       } else {
         resolve(exitCode)
       }
-      // TODO: fix this
-      process.exit(exitCode)
     })
     server.start()
   })

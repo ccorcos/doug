@@ -43,7 +43,7 @@ module.exports = (config, options, webpackConfig) => {
   const PORT = process.env.PORT || 3000
 
   // start up the development server
-  app.listen(PORT, 'localhost', (err) => {
+  const server = app.listen(PORT, 'localhost', (err) => {
     if (err) {
       console.log(err)
       return
@@ -51,5 +51,12 @@ module.exports = (config, options, webpackConfig) => {
     console.log('Listening at http://localhost:' + PORT)
   })
 
-  return new Promise(() => {})
+  return new Promise((resolve) => {
+    // graceful shutdown
+    const shutdown = () => server.close(resolve)
+    // listen for TERM signal .e.g. kill
+    process.on('SIGTERM', shutdown)
+    // listen for INT signal e.g. Ctrl-C
+    process.on('SIGINT', shutdown)
+  })
 }
