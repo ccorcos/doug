@@ -1,10 +1,10 @@
 {
   "name": "doug-lib",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "bin": {
     "doug-lib": "./bin.js"
   },
   "dependencies": {
-    "doug": "^0.3.1"
+    "doug": "^0.3.2"
   }
 }
