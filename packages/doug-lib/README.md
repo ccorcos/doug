@@ -2,6 +2,9 @@
 
 A zero-configuration build tool for building JavaScript libraries.
 
+- [Tutorial](https://github.com/ccorcos/doug)
+- [Example](https://github.com/ccorcos/doug/tree/master/packages/example-lib)
+
 ## Configs
 
 #### `src`

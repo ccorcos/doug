@@ -2,6 +2,9 @@
 
 A zero-configuration build tool for creating React applications.
 
+- [Tutorial](https://github.com/ccorcos/doug)
+- [Example](https://github.com/ccorcos/doug/tree/master/packages/example-app)
+
 ## Configs
 
 #### `html`
