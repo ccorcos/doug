@@ -3,14 +3,7 @@
 
 const vorpal = require('doug/vorpal')
 const resolve = require('doug/resolve')
-
-const config = require('doug/config') || {
-  html: './src/index.html',
-  entry: {
-    index: './src/index.js',
-  },
-  test: './test.js',
-}
+const config = Object.assign(require('./defaults'), require('doug/config'))
 
 config.package = require(resolve('package.json'))
 

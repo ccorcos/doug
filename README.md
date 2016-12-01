@@ -6,38 +6,28 @@ Doug is a modular build system that lets you to build your own zero-configuratio
 
 - When you want to take an existing Doug tool and customize or extend it, rather than fork it, you can simply create a new Doug tool depend on the other Doug tool. Thus you never have to deal with upstream merges and you end up with a much more maintainable ecosystem.
 
-At it's core, Doug is just a pattern for building commandline tools using [Vorpal](https://github.com/dthree/vorpal) that is easy to customize and extend. I've created two tools so far:
+At it's core, Doug is just a pattern for building commandline tools using [Vorpal](https://github.com/dthree/vorpal) that is easy to customize and extend.
 
-- [`doug-app`](./packages/doug-app) helps you build React applications with Webpack, Babel, Mocha, Karma, and PhantomJS.
-- [`doug-lib`](./packages/doug-lib) helps you build JS libraries with Babel and Ava.
+## List of Doug tools
 
-For specifics on getting setup using either of those tools, please check out the README files in those projects.
+- [`doug-app`](./packages/doug-app): build React applications with Webpack, Babel, Mocha, Karma, and PhantomJS.
+- [`doug-lib`](./packages/doug-lib): build JavaScript libraries with Babel and Ava.
 
+## Tutorial
 
+You don't need to use `doug` to create your own zero-configuration build tool, but `doug` does contain some code that will help you get going faster. That said, the internals are so simple I'm going to explain everything in this tutorial.
 
+**Background:** For those less familiar with NPM or programming in general, you can create a ["bin" property in a project's `package.json`](https://docs.npmjs.com/files/package.json#bin) that let's you specify commandline aliases. If you install a package globally (`npm install --global`) then you have access to these commands from the commandline anywhere. But if you install a package as a dependency of a project, you can access them from `node_modules/.bin`. But these scripts are also accessible through the ["scripts" property of a project's `package.json`](https://docs.npmjs.com/misc/scripts). Thus, a Doug tool should [expose a bin script](./packages/doug-app/package.json#L4-6), then we can [alias commands like `npm start` to that script in our projects](./packages/example-app/package.json#L13).
 
+### Hello Doug
 
+> Doug is a **pattern** for creating commandline build tools that are *extensible*.
 
+In this tutorial, we're going to run through an example of creating your own doug tool, [`hello-doug`](./packages/hello-doug), as a build tool for a project, [`hello-project`](./packages/hello-project). There's just going to be one command that says "hello world" but it should give you and idea of all the pieces.
 
+Any build tool needs to be configured. **It's expected of Doug tools that all configurations are optional with reasonable default values.** One way of configuring a build tool is with a JavaScript file in the root of the project, much like Webpack or ESLint. Some projects like to use the existing `project.json` file for configuration but that limits your amount of expressiveness so I don't like to do that.
 
-
-## Table Of Contents
-
-- [create an JavaScript app using `doug-app`](./packages/doug-app/README.md)
-- [create an JavaScript library using `doug-lib`](./packages/doug-lib/README.md)
-- [create your own doug tool from scratch](#create-your-own-doug-tool-from-scratch)
-
-## Create Your Own Doug Tool From Scratch
-
-You don't need to use `doug` to create your own zero-configuration build tool. But the whole point of the `doug` package is to create a set of useful functions for building Doug tools.
-
-**Background:** For those less familiar with NPM or programming in general, you can create a [`bin` property in a project's `package.json`](https://docs.npmjs.com/files/package.json#bin) that let's you specify commandline aliases. If you install a package globally (`npm install --global`) then you have access to these commands from the commandline anywhere. But if you install a package as a dependency of a project, you can access them from `node_modules/.bin`. But these bin scripts are also accessible through the [`scripts` property of a projects `package.json`](https://docs.npmjs.com/misc/scripts). Thus, if a Doug tool exposes a bin script, then we can alias commands to that script through commands like `npm start`, `npm test`, or `npm run-script build`.
-
-> Doug is a pattern for creating commandline build tools that are *extensible*.
-
-Any build tool needs to be configured. Ideally, these configurations should be optional with reasonable default values. One way of configuring a build tool is with a JavaScript file in the root of the project, much like Webpack or ESLint. Some projects like to use the existing `project.json` file for configuration but that limits your amount of expressiveness so I don't like to do that.
-
-So suppose we create a `doug.config.js` file that exports a configuration object at the root of our project.
+So suppose we create a `doug.config.js` file that exports a configuration object at the root of our project:
 
 ```js
 // project/doug.config.js
@@ -49,300 +39,307 @@ module.exports = {
 Now, if we create a Doug tool for this project, we can access that configuration file through `process.env.PWD`:
 
 ```js
-const dougConfig = require(`${process.env.PWD}/doug.config.js`)
+const config = require(`${process.env.PWD}/doug.config.js`)
 ```
 
-Or an easier way is just to use the `doug` package:
+Or an easier way is just to use the `doug`:
 
 ```js
-const dougConfig = require('doug/config')
+const config = require('doug/config')
 ```
 
-Another way we can configure build tools is with commandline options. Commandline options are usually specific to the command and Doug uses [Commander.js](https://github.com/tj/commander.js) for parsing and validating commandline arguments. To define a command, I recommend breaking up commands into separate files so they're easily reusable if someone else wants to extend your Doug tool.
+Another way we want configure build tools is with commandline options. Doug uses [Vorpal](https://github.com/dthree/vorpal) for parsing and validating commandline arguments. Commandline options are usually specific to the command and let's define a command. I recommend breaking up commands into separate files so they're easily reusable if someone else wants to extend your Doug tool.
 
 A command should have two properties -- `options` should let you define the commandline options for the command, and `action` is just a function that does whatever you want.
 
 In the following example, we're defining a command that has a `--name` option, and the action accepts the Doug config and the commandline options and will `console.log` an appropriate greeting.
 
+*[`hello-doug/command/hello.js`](./packages/hello-doug/command/hello.js)*
 ```js
-// doug-tool/command/hello.js
 module.exports = {
-  options: (program) => {
-    return program
-      .option('-n, --name', 'name of the person to greet')
+  options: (vorpal) => {
+    return vorpal
+      .option('-n, --name <name>', 'name of the person to greet')
   },
-  action: (dougConfig, cliOptions) => {
-    console.log(`hello ${cliOptions.name || dougConfig.name || 'world'}`)
+  action: (config, options) => {
+    console.log(`hello ${options.name || config.name || 'world'}`)
   }
 }
 ```
 
-The `program` passed into the `options` function is going to be a Commander.js program so it's all the same syntax. The `action` function will be called from the actual commandline script, but refactoring each command into this format makes it much easier for others to extend with their own tools. You'll see how that's done later.
+The `vorpal` argrument passed into the `options` function is going to be a [Vorpal command](https://github.com/dthree/vorpal/wiki/api-%7C-vorpal.command) so it's all the same syntax. The `action` function will be called from the commandline script, but refactoring each command into this format makes it much easier for others to extend with their own tools.
 
-Next thing we want to do is define the Commander.js command and, again, we'll want to separate this in it's own file to make it easier for extension later.
+Next thing we want to do is define the Vorpal command and, again, we'll want to separate this in it's own file to make it easier for extension later.
 
+*[`hello-doug/cli/hello.js`](./packages/hello-doug/cli/hello.js)*
 ```js
-// doug-tool/cli/hello.js
 const hello = require('../commands/hello')
-module.exports = (program, dougConfig) => {
-  program
+
+module.exports = (vorpal, config) => {
+  vorpal
     .command('hello')
     .description('a friendly greeting')
-    .pipe(hello.options)
-    .action((cliOptions) => {
-      return hello.action(dougConfig, cliOptions)
+    .use(hello.options)
+    .action(({options}) => {
+      return hello.action(config, options)
     })
 }
 ```
 
-The `.pipe` function will wire up the options for you and in the `action` callback, we call the `hello.action` with all the appropriate arguments. **Note:** the `.pipe` prototype function is an extention of Commander.js that's available through `doug` using by `const program = require('doug/commander')` rather than `const program = require('commander')`.
+In the exported function, `vorpal` is just a Vorpal instance so we can define a new command on it, and `config` is the `doug.config.js` or some defaults if that file doesn't exist. The `.use` function is a [small addition](./packages/doug/vorpal.js#L5-7) to Vorpal that makes it [a bit more composable](https://github.com/dthree/vorpal/issues/198), applying all the options for the hello command to the Vorpal command. Then in the action, we get the CLI options and pass them on to the `hello.action`.
 
-The last piece of the puzzle is to create the actual commandline bin script. So let's do that:
+The last piece of the puzzle is to create the actual commandline script. So let's do that:
 
+*[`hello-doug/bin.js`](./packages/hello-doug/bin.js)*
 ```js
-// doug-tool/bin.js
 #!/usr/bin/env node
-const program = require('doug/commander')
-const config = require('doug/config')
-require('./cli/hello')(program, config)
-program.parse(process.argv)
+
+const vorpal = require('doug/vorpal')
+const config = Object.assign(require('./defaults'), require('doug/config'))
+
+require('./cli/hello')(vorpal, config)
+
+vorpal
+  .delimiter('hello-doug ❯❯❯')
+  .parse(process.argv)
 ```
 
-The first line is called a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) which lets your shell know which program is used to run this script. Then we're using the `doug` helpers to load Commander.js (with the `.pipe` prototype method) and the project's `doug.config.js` file. Lastly, we wire up the hello command and parse the commandline arguments to set everything in motion.
+The defaults file simply exports any default configuration which, in this case should just be an empty object. It may seem superfluous, but if we ever wanted to create new defaults, this allows other tools that extend this tool to get those changes without having to change their code.
 
-Next we need to make the script executable. This lets us run the script with `./bin.js hello` rather than having to pass it to call it with `node bin.js hello`. It's as easy as `chmod +x bin.js`. Then we'll want to create an NPM alias to that file so that we can use this script with `doug-tool hello` rather than `./bin.js hello`. And this can be done in the `doug-tool/package.json` file which should look something like this:
-
+*[`hello-doug/defaults.js`](./packages/hello-doug/defaults.js)*
 ```js
-// doug-tool/package.json
+module.exports = {}
+```
+
+The first line is called a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) which lets your shell know which program is used to run this script. Then we're using `doug` to load Vorpal with the `.use` prototype method and the project's `doug.config.js`. Note that the default config is just an empty object. Lastly, we require the hello command and parse the commandline arguments to set everything in motion.
+
+Next, we need to make the script accessible from the outside. First we need to make it executable. This let's us run the script with `./bin.js hello` rather than having to call it with `node bin.js hello`. It's as easy as `chmod +x bin.js`. Then we'll want to create an NPM alias to that file so that we can use this script with `hello-doug hello` rather than `./node_modules/hello-doug/bin.js hello`. And this can be done in the `hello-doug/package.json` file which should look something like this:
+
+*[`hello-doug/package.json`](./packages/hello-doug/package.json)*
+```js
 {
-  "name": "doug-tool",
-  "version": "0.0.1",
+  "name": "hello-doug",
+  "private": true,
+  "version": "0.3.0",
   "bin": {
-    "doug-tool": "./bin.js"
+    "hello-doug": "./bin.js"
   },
   "devDependencies": {
-    "doug": "^0.1.0"
+    "doug": "^0.3.0"
   }
 }
 ```
 
-Now we can't use `doug-tool` from the commandline yet because the script is not on our `$PATH`. But that doesn't matter because we want to make sure we use it through `npm run-script` otherwise `process.env.PWD` might not be the right directory to find the `doug.config.js` file. So back in the project we're working on, we can use `doug-tool` through the `package.json` scripts property.
+So now we have a build tool. It doesn't exactly build anything, but you could image this command [building distribution files](./packages/doug-app/cli/build.js), [deploying](./packages/doug-app/cli/deploy.js), [publishing](./packages/doug-app/cli/release.js), [running tests](./packages/doug-app/cli/test.js) or [starting up a development server](./packages/doug-app/cli/dev.js).
 
+Now let's use this build tool in one of our projects. All we need to do is create the project and add a script to that project's `package.json`.
 
+*[hello-project/package.json](./packages/hello-project/package.json)*
 ```js
-// project/package.json
 {
-  "name": "project",
-  "version": "0.0.1",
+  "name": "hello-project",
+  "version": "0.3.0",
   "scripts": {
-    "hello": "doug-tool hello"
+    "hello": "hello-doug hello"
   },
   "devDependencies": {
-    "doug-tool": "^0.0.1"
+    "hello-doug": "^0.3.0"
   }
 }
 ```
 
-Now, if you publish `doug-tool` you should be able to `npm install` inside your project and run `npm run-script hello` to see "hello world" log out in the console. And if you run `npm run-script hello -- --name=chet`, you should see "hello chet" log out in the console.
+Now there are a few ways to get this to work:
 
-If you don't want to publish `doug-tool` on NPM and simply want to use it locally, you can simply link them together in your filesystem using [`npm link`](https://docs.npmjs.com/cli/link).
+1.  If you've published your `hello-doug` to NPM, you can just `npm install` and you're good to go.
 
-```sh
-cd doug-tool
-npm link
-cd ../project
-npm link doug-tool
-npm install
+2. If you're building `hello-doug` locally in your filesystem, you'll need to link the projects together:
+
+  - The easiest way is to put these packages in a `packages` directory and use a tool like [Lerna](https://lernajs.io):
+
+      ```sh
+      npm install --global lerna@prerelease
+      lerna bootstrap
+      ```
+
+  - If you want these packages to remain in different repos or just want to do things manually, you'll have to use [`npm link`](https://docs.npmjs.com/cli/link).
+
+      ```sh
+      # create a symlink to hello-doug
+      cd path/to/hello-doug
+      npm link
+      # link hello-doug to this project
+      cd path/to/hello-project
+      npm link hello-doug
+      # install
+      npm install
+      ```
+
+Once you've figured that out, you should be able to use it:
+
+```
+❯❯❯ npm start
+
+> hello-project@0.3.0 start /Users/chetcorcos/code/doug/packages/hello-project
+> hello-doug hello
+
+hello-doug ❯❯❯
+hello world
 ```
 
-And now the commands should work. If you're working on a larger project or just want to create a simple tool that separates all of your build tools from your actual source code, I'd recommend using [Lerna](https://lernajs.io) and putting all of your projects in a `packages` directory. Then you
+And we can pass options as well:
 
+```
+❯❯❯ npm start -- --name chet
 
+> hello-project@0.3.0 start /Users/chetcorcos/code/doug/packages/hello-project
+> hello-doug hello "--name" "chet"
 
----
+hello-doug ❯❯❯
+hello chet
+```
 
-- publish new version with dependencies, etc.
-- rename to hello doug
-- setup hello-doug so it works
-- extending hello-doug
-- better project readme
-- medium articles
+And if we want to make some configurations specifically for our `hello-project`, we can create a `doug.config.js` file:
 
-
-
-
-
-
-
-
-
-
-- cli options
-- project config options
-
-- commands
-- hooks
-
-- CLI
-
-
-
-## Best Practices
-
-- always have default configs
-- separate things out so they're extensible
-- make not of the way things can be overridden
-- actions should return promises
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-> Please submit a PR if you have a better way of explaining how this all works.
-
-There are three pieces that all come together to make up a Doug tool: the executable script, a set of commands, and the Doug config file. Here's simple example that shows how all the pieces work together.
-
-Suppose you want to create your own tool called `my-doug-tool`:
-
+*[hello-project/doug.config.js](./packages/hello-project/doug.config.js)*
 ```js
-// my-doug-tool/package.json
+module.exports = {
+  name: 'doug',
+}
+```
+
+And now when we run the command without any options, it should say "hello doug" rather than "hello world":
+
+```
+❯❯❯ npm start
+
+> hello-project@0.3.0 start /Users/chetcorcos/code/doug/packages/hello-project
+> hello-doug hello
+
+hello-doug ❯❯❯
+hello doug
+```
+
+### Extending A Doug Tool
+
+One of the primary motivations for Doug is to create a tool that can be easily customized, extended, and maintained without foregoing the benefits of a zero-configuration build tool.
+
+So suppose we want to extend our `hello-doug` project to support another language, let's call it `hola-doug`. We can create a new package that depends on both `doug` and `hello-doug`:
+
+*[hola-doug/package.json](./packages/hola-doug/package.json)*
+```js
 {
-  "name": "my-doug-tool",
-  "version": "0.0.1",
+  "name": "hola-doug",
+  "private": true,
+  "version": "0.3.0",
   "bin": {
-    "my-doug-tool": "./cli.js"
-  }
-}
-```
-
-And you want to use this tool for your project:
-
-```js
-// my-project/package.json
-{
-  "name": "my-project",
-  "version": "0.0.1",
+    "hello-doug": "./bin.js"
+  },
   "devDependencies": {
-    "my-doug-tool": "^0.0.1"
-  },
-  "script": {
-    "something": "my-doug-tool something"
+    "doug": "^0.3.0",
+    "hello-doug": "^0.3.0"
   }
 }
 ```
 
-Now let's create a command. Every command should be abstracted into two pieces.
+Then we can create a command that adds this new functionality, extending the `hello-doug` version:
 
-- `options` lets you specify commandline options using [Commander.js `.option`](https://github.com/tj/commander.js#option-parsing) and returning the command.
-- `action` is just a function that does something. The arguments are typically the Doug config, the cli options, and anything else that's relevant like a webpack configuration. If this function is async, it should return a promise so it can be extended easily.
-
-This command simply logs some stuff:
-
+*[hola-doug/commands/hello.js](./packages/hola-doug/commands/hello.js)*
 ```js
-// my-doug-tool/commands/something.js
+const hello = require('hello-doug/commands/hello')
+
 module.exports = {
-  options: (program) => {
-    return program
-      .option('-f, --force', 'a force option')
+  options: (vorpal) => {
+    return vorpal
+      .use(hello.options)
+      .option('-s, --spanish', 'greet in spanish')
   },
   action: (config, options) => {
-    const verb = options.force ? 'force' : 'do'
-    console.log(`${verb} something ${config.when}`)
-  },
+    if (options.spanish) {
+      console.log(`hola ${options.name || config.name || 'mundo'}`)
+    } else {
+      return hello.action(config, options)
+    }
+  }
 }
 ```
 
-We want the project to be able to specify `when` inside a config file so lets do that:
+Then the `cli/hello.js` file, `defaults.js` file, and the `bin.js` file are going to look very similar:
 
+*[hola-doug/cli/hello.js](./packages/hola-doug/cli/hello.js)*
 ```js
-// my-project/doug.config.js
+const hello = require('../commands/hello')
+
+module.exports = (vorpal, config) => {
+  vorpal
+    .command('hello')
+    .description('a friendly greeting')
+    .use(hello.options)
+    .action(({options}) => {
+      return hello.action(config, options)
+    })
+}
+```
+
+*`hola-doug/defaults.js`*
+```js
+module.exports = {}
+```
+
+*[hola-doug/bin.js](./packages/hola-doug/bin.js)*
+```js
+const vorpal = require('doug/vorpal')
+const config = Object.assign(require('./defaults'), require('doug/config'))
+
+require('./cli/hello')(vorpal, config)
+
+vorpal
+  .delimiter('hola-doug ❯❯❯')
+  .parse(process.argv)
+```
+
+Now we can use `npm start -- --name Jose --spanish`, for example. But we can extend these tools in many other ways. We change the default configs such as setting the name to `Jose`.
+
+*[`hola-doug/defaults.js`](./packages/hola-doug/defaults.js)*
+```js
 module.exports = {
-  when: 'now',
+  name: 'Jose',
 }
 ```
 
-The last piece is putting everything together in the cli script. We can access the Doug config file using `const config = require('doug/config')`. We also want to use `doug/commander` because we add a `.pipe` convenience function for wiring up the command options.
+We can also import commands from other Doug tools such as `doug-app`:
 
+*[hola-doug/bin.js](./packages/hola-doug/bin.js)*
 ```js
-// my-doug-tool/cli.js
-#!/usr/bin/env node
-const program = require('doug/commander')
-const config = require('doug/config')
-const dev = require('./commands/dev')
+const vorpal = require('doug/vorpal')
+const config = Object.assign(
+  require('doug-app/defaults'),
+  require('hello-doug/defaults'),
+  require('./defaults'),
+  require('doug/config')
+)
 
-program
-  .command('something')
-  .description('does something')
-  .pipe(dev.options)
-  .action((options) => {
-    return dev.action(config, options)
-  })
+require('./cli/hello')(vorpal, config)
+require('doug-app/cli/dev')(vorpal, config)
+
+vorpal
+  .delimiter('hola-doug ❯❯❯')
+  .parse(process.argv)
 ```
 
-Now inside your project, you should be able to run `npm run-script something` and see it log "do something now". You can pass options as well: `npm run-script something -- --force` should log "force something now". And any project can specify the `when` property in the `doug.config.js` file.
+Notice how we've merged all the default configs together. So there you have it. Fully extensible, zero-configuration build tools. It's really just a pattern.
 
-Now the real benefit of this pattern is that we can extend these tools easily to create new tools. Suppose we want to create a new Doug tool:
+### Best Practices
 
+In review of everything covered so far, let's talk about some key patterns that enable our tools to be extensible:
 
-```js
-// other-doug-tool/commands/something.js
-const something = require('my-doug-tool/commands/something')
-module.exports = {
-  options: (program) => {
-    return program
-      .pipe(something.options)
-      // we can specify extra options here
-      .option('-t, --today', 'do it today')
-      .option('-y, --yesterday', 'do it yesterday')
-  },
-  action: (config, options) => {
-    const when = options.today ? 'today'
-               : options.yesterday ? 'yesterday'
-               : config.when ? config.when
-               : 'never'
-    return something.action({when}, options)
-  },
-}
-```
-
-What we've done is added some custom pre-configurations with this new command but reused all of the code from before without having to fork that tool. The only legwork we need to do is write out the whole cli script again to wire everything up.
-
-**The idea here is that you can extend or configure any Doug tool by creating a new Doug tool and calling into those other commands.** There's no need for fancy abstractions for configuring and adding hooks -- everything is explicit.
-
-### Philosophy / Best Practices:
-
-- All commands should be extensible so that other tools can reuse them.
-- As much as possible, use Node.js API's instead of CLI API's.
-
-## Using `doug-app`
-
-```sh
-npm install --save-dev doug-app
-```
-
-See `packages/example-app` to see an example `doug.config.js` and the `package.json` scripts.
-
-## Using `doug-lib`
-
-```sh
-npm install --save-dev doug-lib
-```
-
-See `packages/example-lib` to see an example `doug.config.js` and the `package.json` scripts.
+- define command as objects with `action` and `options` fields in separate files
+- define the cli commands on vorpal in separate files that accept `vorpal` and the `config`
+- define the defaults in a separate file so they can be required by tools that extend your tool
+  - every tool should have default values so that `doug.config.js` is never required
+- use `doug/vorpal` to import `vorpal` with the `Command.use` extension
+- use `doug/config` so that this tool can be globally installed once I figure out how the config resolving should work
+- use `doug/resolve` so that projects can define relative paths in their `doug.config.js` file
+- all async actions should return promises so they can be extended before or after they run
 
 ## Development
 
