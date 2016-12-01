@@ -1,7 +1,6 @@
 # To Do
 
 - use vorpal instead of commander
-  - get dev server working better with vorpal
   - figure out how to get karma and jsdom working together
 - relative paths in config file
 - hello doug examples

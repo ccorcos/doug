@@ -8,4 +8,6 @@ require('./cli/test')(vorpal, config)
 require('./cli/build')(vorpal, config)
 require('./cli/release')(vorpal, config)
 
-vorpal.parse(process.argv)
+vorpal
+  .delimiter('doug-lib ❯❯❯')
+  .parse(process.argv)
