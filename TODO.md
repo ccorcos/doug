@@ -8,13 +8,12 @@
     - hello-doug
     - hello-project
 
-- lerna publish packages
-- submit some PRs
-  - lerna with yarn
-    - https://github.com/lerna/lerna/issues/371
-  - yarn .bin not working when linked
-- scenarios
-  - doug-react-native
+- automated tests using docker like yarn does
+- continuous integration with Travis CI
+- flow static typing
+
+- lerna with yarn https://github.com/lerna/lerna/issues/371
+
 - more support
   - gracefully close HTTP server: Error: read EIO?
   - eslint loader: Sha1 error?
@@ -24,10 +23,12 @@
   - custom feature flags
   - deploy s3
   - generate docs + deploy docs
+
 - feathers
   - tooling?
   - doug middleware
   - SSR / next.js
+
 - examples
   - code splitting on pages directory
   - async module loading with client-side router
@@ -36,8 +37,9 @@
     - styleguide, storybook, redux
     - react native
   - js/css library module
+
 - extra
-  - init command
-  - make your own build system using inquirer!
+  - choose your own build system features using inquirer!
+
 - CI integrations
   - travis, circle, browserstack, codeship, jenkins
