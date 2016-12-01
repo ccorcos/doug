@@ -1,5 +1,6 @@
 {
   "name": "hello-doug",
+  "private": true,
   "version": "0.0.1",
   "bin": {
     "hello-doug": "./bin.js"

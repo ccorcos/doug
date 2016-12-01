@@ -2,7 +2,7 @@
 'use strict'
 
 const vorpal = require('doug/vorpal')
-const config = require('doug/config')
+const config = require('doug/config') || {}
 
 require('./cli/hello')(vorpal, config)
 
