@@ -9,7 +9,7 @@ Command.prototype.use = function(fn) {
 const vorpal = require('vorpal')()
 
 vorpal
-  .command('shell')
+  .command('shell', 'open up a Vorpal shell')
   .action(() => {
     vorpal.show()
     return Promise.resolve()

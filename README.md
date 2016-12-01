@@ -219,6 +219,44 @@ hello-doug ❯❯❯
 hello doug
 ```
 
+## Vorpal Shell
+
+By default, `doug` adds a "shell" command to open up a Vorpal shell. In your package.json, you can add the following:
+
+```js
+{
+  "scripts": {
+    "shell": "hello-doug shell"
+  }
+}
+```
+
+Then when you run `npm run-script shell`, you'll end up in the Vorpal shell where you can get some help about how to use the tool.
+
+```
+hello-doug ❯❯❯ help
+
+  Commands:
+
+    help [command...]  Provides help for a given command.
+    exit               Exits application.
+    shell              open up a Vorpal shell
+    hello [options]    a friendly greeting
+
+hello-doug ❯❯❯ help hello
+
+  Usage: hello [options]
+
+  a friendly greeting
+
+  Options:
+
+    --help             output usage information
+    -n, --name <name>  name of the person to greet
+```
+
+You can run `npm run-script shell` to open up a Vorpal shell and run commands like `help` or `help test` to more information about the commandline options.
+
 ### Extending A Doug Tool
 
 One of the primary motivations for Doug is to create a tool that can be easily customized, extended, and maintained without foregoing the benefits of a zero-configuration build tool.

@@ -1,7 +1,6 @@
 # To Do
 
 - documentation and examples
-  - doug
   - doug-app
   - doug-lib
   - tutorials
