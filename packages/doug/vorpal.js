@@ -8,6 +8,13 @@ Command.prototype.use = function(fn) {
 
 const vorpal = require('vorpal')()
 
+vorpal
+  .command('shell')
+  .action(() => {
+    vorpal.show()
+    return Promise.resolve()
+  })
+  
 process.on('SIGINT', () => process.exit(2))
 
 module.exports = vorpal

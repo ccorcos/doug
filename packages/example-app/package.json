@@ -14,6 +14,7 @@
     "build": "doug-app build",
     "deploy": "doug-app deploy",
     "test": "doug-app test",
-    "release": "doug-app release"
+    "release": "doug-app release",
+    "shell": "doug-app shell"
   }
 }

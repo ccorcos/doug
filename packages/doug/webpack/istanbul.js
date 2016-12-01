@@ -5,8 +5,8 @@ module.exports = {
     plugins: [
       [require.resolve('babel-plugin-istanbul'), {
         exclude: [
-          '*spec*',
-          '*test*',
+          '**/*spec*',
+          '**/*test**',
         ],
       }],
     ],

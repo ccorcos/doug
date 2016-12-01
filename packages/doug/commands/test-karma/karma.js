@@ -4,12 +4,12 @@ module.exports = (config, options, webpackConfig) => {
   return {
     basePath: '',
     frameworks: ['mocha'],
-    browsers: ['jsdom'],
+    browsers: ['PhantomJS'],
     files: [
       config.test,
     ],
     preprocessors: {
-      [config.test]: ['webpack', 'sourcemap'],
+      [config.test]: ['webpack'],
     },
     webpack: webpackConfig,
     webpackServer: {
@@ -21,8 +21,7 @@ module.exports = (config, options, webpackConfig) => {
       'karma-coverage',
       'karma-spec-reporter',
       'karma-junit-reporter',
-      'karma-sourcemap-loader',
-      'karma-jsdom-launcher',
+      'karma-phantomjs-launcher',
     ],
     reporters: [
       // 'progress',
