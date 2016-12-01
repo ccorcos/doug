@@ -1,0 +1,10 @@
+{
+  "name": "hello-doug",
+  "version": "0.0.1",
+  "bin": {
+    "hello-doug": "./bin.js"
+  },
+  "devDependencies": {
+    "doug": "^0.2.0"
+  }
+}

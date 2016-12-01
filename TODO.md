@@ -1,13 +1,11 @@
 # To Do
 
-- relative paths in config file
 - hello doug examples
 
 - better readme / documentation
   - whats the point of doug, doug-app, and doug-lib
   - how do they work? how do you use them
   - how do you extend them?
-
 
 - better readme / documentation
 - lerna publish packages

@@ -1,0 +1,10 @@
+{
+  "name": "hello-project",
+  "version": "0.0.1",
+  "scripts": {
+    "hello": "hello-doug hello"
+  },
+  "devDependencies": {
+    "hello-doug": "^0.0.1"
+  }
+}

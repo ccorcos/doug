@@ -2,7 +2,17 @@
 'use strict'
 
 const vorpal = require('doug/vorpal')
-const config = require('doug/config')
+const resolve = require('doug/resolve')
+
+const config = require('doug/config') || {
+  html: './src/index.html',
+  entry: {
+    index: './src/index.js',
+  },
+  test: './test.js',
+}
+
+config.package = require(resolve('package.json'))
 
 require('./cli/dev')(vorpal, config)
 require('./cli/build')(vorpal, config)

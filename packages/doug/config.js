@@ -1,7 +1,13 @@
 'use strict'
 
 const resolve = require('./resolve')
-const config = require(resolve('doug.config.js'))
-config.package = require(resolve('package.json'))
+
+let config = undefined
+
+try {
+  config = require(resolve('doug.config.js'))
+} catch (e) {
+  console.log('doug.config.js not found. using defaults')
+}
 
 module.exports = config

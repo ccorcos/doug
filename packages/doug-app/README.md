@@ -2,39 +2,21 @@
 
 A zero-configuration build tool for creating React applications.
 
-## Features
+## Configs
 
-- Babel
-- PostCSS
-- Webpack
-- React
-- Mocha
-- Karma
-- JSDOM
+#### `html`
 
-## Getting Started
+Path to the index html file. Defaults to `./src/index.html`
 
-```sh
-npm install --save-dev doug-app
-```
+#### `entry`
 
-Create a `doug.config.js` file with the following:
+A map of webpack entry points. Defaults to `{index: './src/index.js'}`
 
-```js
-module.exports = {
-  html: `${__dirname}/path/to/index.html`,
-  entry: {
-    index: `${__dirname}/path/to/index.js`,
-  },
-  test: `${__dirname}/test.js`,
-}
-```
+#### `test`
 
-Then create a `test.js` file for compiling all tests into one file:
+Path to a test file which imports all tests. Defaults to `./test.js`. Make sure you create this file. For example:
 
 ```js
 const context = require.context('./src', true, /test\.js$/)
 context.keys().forEach(context)
 ```
-
-Check out the [example app](https://github.com/ccorcos/doug/tree/master/packages/example-app) for more details.
