@@ -1,9 +1,9 @@
 {
   "name": "example-app",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.3.1",
   "devDependencies": {
-    "doug-app": "^0.3.0"
+    "doug-app": "^0.3.1"
   },
   "dependencies": {
     "react": "^15.4.1",
