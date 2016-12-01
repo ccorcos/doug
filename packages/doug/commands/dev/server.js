@@ -52,5 +52,3 @@ module.exports = (config, options, webpackConfig) => {
 
   return new Promise(() => {})
 }
-
-process.on('SIGINT', () => process.exit(2))
