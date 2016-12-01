@@ -1,15 +1,7 @@
 'use strict'
 
-const path = require('path')
-
-// find the project config file
-const projectRoot = process.env.PWD
-const config = require(path.join(projectRoot, 'doug.config.js'))
-const packageJson = require(path.join(projectRoot, 'package.json'))
-config.packageJson = packageJson
-config.projectRoot = projectRoot
-config.projectName = packageJson.name
-config.projectVersion = packageJson.version
-config.projectDist = path.join(projectRoot, 'dist')
+const resolve = require('./resolve')
+const config = require(resolve('doug.config.js'))
+config.package = require(resolve('package.json'))
 
 module.exports = config

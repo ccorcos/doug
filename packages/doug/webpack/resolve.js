@@ -2,11 +2,12 @@
 
 const path = require('path')
 const buildSystemRoot = path.resolve(__dirname, '..')
+const resolve = require('../resolve')
 
 module.exports = (config) =>({
   resolve: {
     root: [
-      config.projectRoot,
+      resolve('.'),
     ],
     extensions: [
       '',
@@ -14,14 +15,14 @@ module.exports = (config) =>({
     ],
     modulesDirectories: [
       // project
-      path.resolve(config.projectRoot, 'node_modules'),
+      resolve('node_modules'),
       // build-system
       path.join(buildSystemRoot, 'node_modules'),
     ],
   },
   resolveLoader: {
     root: [
-      config.projectRoot,
+      resolve('.'),
     ],
     modulesDirectories: [
       // build-system

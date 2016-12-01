@@ -11,7 +11,6 @@ module.exports = (config) => {
     require('doug/webpack/json'),
     require('doug/webpack/icons'),
     require('doug/webpack/resolve')({
-      projectRoot: config.projectRoot,
       projectName: config.projectName,
     })
   )

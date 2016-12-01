@@ -1,12 +1,15 @@
 'use strict'
 
+const resolve = require('../resolve')
+const R = require('ramda')
+
 module.exports = (config) => ({
   devtool: 'hidden-source-map',
   profile: config.profile,
-  entry: config.entry,
+  entry: R.map(resolve, config.entry),
   // output to the distribution folder
   output: {
-    path: config.projectDist,
+    path: resolve('dist'),
     // the public path to all CDN assets that platform will inject
     publicPath: config.rootUrl || '',
     // include the chunkhash for the file for long-term caching

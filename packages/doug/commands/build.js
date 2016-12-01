@@ -3,6 +3,7 @@
 const shell = require('shelljs')
 const webpack = require('webpack')
 const write = require('../utils/write')
+const resolve = require('../resolve')
 
 const runWebpack = (webpackConfig) => {
   return new Promise((resolve, reject) => {
@@ -26,7 +27,7 @@ module.exports = {
       .option('--profile', 'output the webpack stats.json file for analysis')
   },
   action: (config, options, webpackConfig) => {
-    shell.rm('-rf', config.projectDist)
+    shell.rm('-rf', resolve('dist'))
     return runWebpack(webpackConfig)
       .then((stats) => {
         console.log(stats.toString({
@@ -34,7 +35,7 @@ module.exports = {
           children: false
         }))
         if (options.profile) {
-          const filename = `${config.projectDist}/stats.json`
+          const filename = resolve('dist/stats.json')
           const contents = JSON.stringify(stats.toJson('verbose'))
           write(filename, contents)
           console.log(`Upload ${filename} to http://webpack.github.io/analyse/#modules`)

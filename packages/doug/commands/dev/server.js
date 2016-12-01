@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const webpack = require('webpack')
 const app = express()
+const resolve = require('../../resolve')
 
 // parse json all request body
 app.use(bodyParser.json({limit: '50mb'}))
@@ -30,7 +31,7 @@ module.exports = (config, options, webpackConfig) => {
   app.use(require('webpack-hot-middleware')(compiler))
 
   // serve the distribution assets
-  app.use(express.static(path.join(config.projectRoot, 'dev')))
+  app.use(express.static(resolve('dev')))
 
   // HTML5 History
   // app.get('*', function(req, res) {

@@ -22,12 +22,12 @@ module.exports = {
       .option('--branch <branch>', 'deploy to a branch other than gh-pages')
   },
   action: (config, options) => {
-    return publishGit(config.projectDist, {
+    return publishGit(resolve('dist'), {
       repo: options.repo,
       remote: options.remote,
       branch: options.branch,
-      tag: config.projectVersion,
-      message: config.projectVersion,
+      tag: config.package.version,
+      message: config.package.version,
       logger: console.log,
     })
   },

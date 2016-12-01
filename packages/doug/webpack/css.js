@@ -3,6 +3,7 @@
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const Css = new ExtractTextPlugin('[name]-[contenthash].css')
+const resolve = require('../resolve')
 
 module.exports = (config) => {
   if (config.ignore) {
@@ -36,7 +37,7 @@ module.exports = (config) => {
       return [
         // order matters!
         require('postcss-import')({
-          path: config.projectRoot,
+          path: resolve('.'),
           addDependencyTo: webpack,
         }),
         require('postcss-mixins'),

@@ -5,8 +5,7 @@ const merge = require('webpack-merge')
 module.exports = (config, options) => {
   return merge(
     require('./base')({
-      projectRoot: config.projectRoot,
-      projectName: config.projectName,
+      projectName: config.package.name,
     }),
     require('doug/webpack/istanbul'),
     require('doug/webpack/css')({

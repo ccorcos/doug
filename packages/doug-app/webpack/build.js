@@ -6,11 +6,9 @@ const merge = require('webpack-merge')
 module.exports = (config, options) => {
   return merge(
     require('./base')({
-      projectRoot: config.projectRoot,
-      projectName: config.projectName,
+      projectName: config.package.name,
     }),
     require('doug/webpack/css')({
-      projectRoot: config.projectRoot,
       ignore: false,
       buildCss: options.buildCss,
     }),
@@ -22,7 +20,6 @@ module.exports = (config, options) => {
     }),
     require('doug/webpack/app-build')({
       profile: options.profile,
-      projectDist: config.projectDist,
       entry: config.entry,
       rootUrl: options.rootUrl,
     }),

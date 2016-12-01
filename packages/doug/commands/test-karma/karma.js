@@ -1,15 +1,17 @@
 'use strict'
 
+const resolve = require('../../resolve')
+
 module.exports = (config, options, webpackConfig) => {
   return {
     basePath: '',
     frameworks: ['mocha'],
     browsers: ['PhantomJS'],
     files: [
-      config.test,
+      resolve(config.test),
     ],
     preprocessors: {
-      [config.test]: ['webpack'],
+      [resolve(config.test)]: ['webpack'],
     },
     webpack: webpackConfig,
     webpackServer: {

@@ -3,11 +3,11 @@
 const path = require('path')
 
 module.exports = {
-  html: path.resolve('.', 'src', 'index.html'),
+  html: './src/index.html',
   entry: {
-    index: path.resolve('.', 'src', 'index.js'),
+    index: './src/index.js',
   },
-  test: path.resolve('.', 'test.js'),
+  test: './test.js',
   api: (app) => {
 
   },
