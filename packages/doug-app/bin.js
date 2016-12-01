@@ -10,4 +10,6 @@ require('./cli/deploy')(vorpal, config)
 require('./cli/release')(vorpal, config)
 require('./cli/test')(vorpal, config)
 
-vorpal.parse(process.argv)
+vorpal
+  .delimiter('doug-app ❯❯❯')
+  .parse(process.argv)
