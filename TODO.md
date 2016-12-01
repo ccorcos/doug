@@ -1,6 +1,12 @@
 # To Do
 
 - documentation and examples
+  - doug
+  - doug-app
+  - doug-lib
+  - tutorials
+    - hello-doug
+    - hello-project
 
 - lerna publish packages
 - submit some PRs

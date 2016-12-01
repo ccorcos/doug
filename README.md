@@ -1,8 +1,25 @@
 # Doug 🔨🔨🔨
 
-Doug is a modular build system that lets you to build your own zero-configuration commandline tools. That means you should only ever have one devDependency in your project and that's the Doug tool you're using to build your project. The reason you might want a tool like this is so you can use the same build system for multiple projects without having repetitive code and brittle configurations.
+Doug is a modular build system that lets you to build your own zero-configuration commandline tools. Doug solves two problems:
 
-At it's core, Doug is just a pattern for building commandline tools using [Commander.js](https://github.com/tj/commander.js) that is easy to customize and extend.
+- Rather than install `webpack`, `babel`, `karma`, `mocha` and all of the various tools just to get a project up and running, you only need to install one. [`create-react-app`](https://github.com/facebookincubator/create-react-app) is a very popular solution to this problem.
+
+- When you want to take an existing Doug tool and customize or extend it, rather than fork it, you can simply create a new Doug tool depend on the other Doug tool. Thus you never have to deal with upstream merges and you end up with a much more maintainable ecosystem.
+
+At it's core, Doug is just a pattern for building commandline tools using [Vorpal](https://github.com/dthree/vorpal) that is easy to customize and extend. I've created two tools so far:
+
+- [`doug-app`](./packages/doug-app) helps you build React applications with Webpack, Babel, Mocha, Karma, and PhantomJS.
+- [`doug-lib`](./packages/doug-lib) helps you build JS libraries with Babel and Ava.
+
+For specifics on getting setup using either of those tools, please check out the README files in those projects.
+
+
+
+
+
+
+
+
 
 ## Table Of Contents
 
