@@ -1,8 +1,14 @@
 # To Do
 
-- global resolution / command install
-- doug init
-- end to end tests inside a docker container
+- end to end unit test
+- update readme
+  - config.root check to see if we have a root project
+- doug init commands
+  - move examples inside as templates
+  - move hello doug to its own repo
+
+
+
 
 - documentation and examples
   - doug-app

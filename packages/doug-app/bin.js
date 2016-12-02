@@ -7,7 +7,6 @@ const config = Object.assign(require('./defaults'), require('doug/config'))
 
 if (resolve.root) {
   config.package = require(resolve('package.json'))
-
   require('./cli/dev')(vorpal, config)
   require('./cli/build')(vorpal, config)
   require('./cli/deploy')(vorpal, config)
