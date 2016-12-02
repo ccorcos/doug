@@ -1,8 +1,9 @@
 'use strict'
 
-const ghpages = require('gh-pages')
-
 const publishGit = (dir, options) => {
+  // collections shim conflicts with eslint-loader -> object-hash
+  // https://github.com/tschaub/gh-pages/issues/42
+  const ghpages = require('gh-pages')
   return new Promise((resolve, reject) => {
     ghpages.publish(dir, options, (err) => {
       if (err) {

@@ -7,6 +7,7 @@ module.exports = (config, options) => {
     require('./base')({
       projectName: config.package.name,
     }),
+    {eslint: {envs: ['jasmine']}},
     require('doug/webpack/istanbul'),
     require('doug/webpack/css')({
       ignore: true,
