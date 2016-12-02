@@ -1,5 +1,9 @@
 # To Do
 
+- global resolution / command install
+- doug init
+- end to end tests inside a docker container
+
 - documentation and examples
   - doug-app
   - doug-lib
