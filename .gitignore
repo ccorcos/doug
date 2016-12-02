@@ -3,3 +3,4 @@ node_modules
 *.log
 test-coverage.xml
 test-results.xml
+env

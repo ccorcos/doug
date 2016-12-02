@@ -1,14 +1,8 @@
 # To Do
 
-- end to end unit test
-- update readme
-  - config.root check to see if we have a root project
 - doug init commands
   - move examples inside as templates
-  - move hello doug to its own repo
-
-
-
+- end to end unit test
 
 - documentation and examples
   - doug-app
@@ -52,3 +46,39 @@
 
 - CI integrations
   - travis, circle, browserstack, codeship, jenkins
+
+
+
+## End To End unit tests
+
+```sh
+# setup
+git clean -fXd
+sudo pip install virtualenv
+virtualenv env
+source env/bin/activate
+pip install nodeenv
+nodeenv -p -j8 --prebuilt -n "7.0.0" --with-npm --npm "4.0.1"
+source env/bin/activate
+npm install -g lerna@prerelease
+lerna bootstrap
+```
+
+```sh
+mkdir test
+doug-app init
+doug-app build
+```
+
+```sh
+mkdir test
+doug-app init origin
+cd origin
+git init --bare
+git add .
+git commit -m "first"
+cd ..
+git clone origin local
+cd local
+# npm start / doug-app dev check for localhost:3000
+```
