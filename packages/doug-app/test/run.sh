@@ -20,13 +20,14 @@ if [ ! -d ~/doug-app-origin ]; then
   exit 1
 fi
 cd ~/doug-app-origin
-git init --base
+git init --bare
 git add .
 git commit -m "doug-app-origin"
 cd ~
 git clone doug-app-origin doug-app-test
 cd ~/doug-app-test
-npm install
+# npm install
+cp -r ~/doug-app-origin/node_modules doug-app-test
 
 echo "TEST: doug-app test"
 cd ~/doug-app-test

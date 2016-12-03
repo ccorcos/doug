@@ -1,11 +1,14 @@
 # To Do
 
-- doug init -- make sure it works and find the proper loaders
-  - move example-lib inside doug-lib
 - docker tests with test/run.sh and some way of curling localhost:3000 to verify it worked
   - dev test!
 - travis ci
 
+docker run node /bin/bash test/run.sh
+
+- doug-lib
+  - doug-lib init
+  - docker tests
 
 - documentation and examples
   - doug-app
@@ -63,3 +66,5 @@ docker run ubuntu /bin/echo 'Hello world'
 docker run -t -i ubuntu /bin/bash
 docker run -t -i node /bin/bash
 ```
+
+docker run -v `pwd`/test:/test -e GIT_BRANCH=master node /bin/bash /test/run.sh
