@@ -1,10 +1,10 @@
 {
   "name": "example-lib",
   "private": true,
-  "version": "0.3.5",
+  "version": "0.3.6",
   "main": "./src/index.js",
   "devDependencies": {
-    "doug-lib": "^0.3.5"
+    "doug-lib": "^0.3.6"
   },
   "scripts": {
     "build": "doug-lib build",

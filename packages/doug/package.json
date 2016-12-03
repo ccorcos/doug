@@ -1,6 +1,6 @@
 {
   "name": "doug",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "dependencies": {
     "assert": "^1.4.1",
     "ava": "^0.17.0",
@@ -13,7 +13,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "body-parser": "^1.15.2",
     "css-loader": "^0.26.0",
-    "eslint": "^3.11.0",
+    "eslint": "^3.11.1",
     "eslint-loader": "^1.6.1",
     "express": "^4.14.0",
     "extended-define-webpack-plugin": "^0.1.2",
@@ -52,7 +52,6 @@
     "webpack-hot-middleware": "^2.13.2",
     "webpack-merge": "^0.17.0",
     "babel-eslint": "^7.1.1",
-    "eslint": "^3.11.1",
     "eslint-config-react-app": "^0.3.0",
     "eslint-plugin-flowtype": "^2.29.1",
     "eslint-plugin-import": "^2.2.0",
