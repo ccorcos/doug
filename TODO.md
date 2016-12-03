@@ -48,37 +48,15 @@
   - travis, circle, browserstack, codeship, jenkins
 
 
-
-## End To End unit tests
-
-```sh
-# setup
-git clean -fXd
-sudo pip install virtualenv
-virtualenv env
-source env/bin/activate
-pip install nodeenv
-nodeenv -p -j8 --prebuilt -n "7.0.0" --with-npm --npm "4.0.1"
-source env/bin/activate
-npm install -g lerna@prerelease
-lerna bootstrap
-```
+## Docker on Mac Quickstart
 
 ```sh
-mkdir test
-doug-app init
-doug-app build
-```
-
-```sh
-mkdir test
-doug-app init origin
-cd origin
-git init --bare
-git add .
-git commit -m "first"
-cd ..
-git clone origin local
-cd local
-# npm start / doug-app dev check for localhost:3000
+brew install docker
+brew install boot2docker
+boot2docker init
+boot2docker up
+eval "$(boot2docker shellinit)"
+docker run ubuntu /bin/echo 'Hello world'
+docker run -t -i ubuntu /bin/bash
+docker run -t -i node /bin/bash
 ```
