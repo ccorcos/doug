@@ -1,11 +1,11 @@
 {
   "name": "doug-app",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "bin": {
     "doug-app": "./bin.js"
   },
   "dependencies": {
-    "doug": "^0.3.6",
+    "doug": "^0.3.7",
     "webpack-merge": "^0.17.0"
   }
 }
