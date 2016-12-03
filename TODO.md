@@ -1,8 +1,11 @@
 # To Do
 
-- doug init commands
-  - move examples inside as templates
-- end to end unit test
+- doug init -- make sure it works and find the proper loaders
+  - move example-lib inside doug-lib
+- docker tests with test/run.sh and some way of curling localhost:3000 to verify it worked
+  - dev test!
+- travis ci
+
 
 - documentation and examples
   - doug-app

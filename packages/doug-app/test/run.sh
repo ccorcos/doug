@@ -64,4 +64,8 @@ if [ ! $GH_PAGES_BRANCH ]; then
   exit 1
 fi
 
+# echo "TEST: doug-app dev"
+# cd ~/doug-app-test
+# doug-app dev
+
 exit 0

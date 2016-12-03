@@ -13,7 +13,7 @@ if (resolve.root) {
   require('./cli/release')(vorpal, config)
   require('./cli/test')(vorpal, config)
 } else {
-  // require('./cli/init')(vorpal, config)
+  require('./cli/init')(vorpal, config)
 }
 
 vorpal

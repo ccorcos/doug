@@ -25,6 +25,8 @@ module.exports = (config) =>({
       resolve('.'),
     ],
     modulesDirectories: [
+      // project
+      resolve('node_modules'),
       // build-system
       path.join(buildSystemRoot, 'node_modules'),
     ],
