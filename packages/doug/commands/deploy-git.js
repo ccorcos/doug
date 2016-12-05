@@ -1,6 +1,7 @@
 'use strict'
 
 const resolve = require('../resolve')
+const R = require('ramda')
 
 const publishGit = (dir, options) => {
   // collections shim conflicts with eslint-loader -> object-hash
@@ -25,13 +26,12 @@ module.exports = {
       .option('--branch <branch>', 'deploy to a branch other than gh-pages')
   },
   action: (config, options) => {
-    return publishGit(resolve('dist'), {
+    return publishGit(resolve('dist'), R.filter(Boolean, {
       repo: options.repo,
       remote: options.remote,
       branch: options.branch,
-      tag: config.package.version,
       message: config.package.version,
       logger: console.log,
-    })
+    }))
   },
 }

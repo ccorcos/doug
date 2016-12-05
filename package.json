@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "lerna": "2.0.0-beta.30"
+  },
+  "scripts": {
+    "test": "bash ./test/start.sh"
   }
 }

@@ -3,13 +3,9 @@
 set -e
 set -o pipefail
 
-# some formatted logging commands
-function log() { echo "LOG: $@"; }
-function test() { echo "TEST: $@"; }
-function error() { echo "ERROR: $@"; exit 1; }
-
-source ./setup.sh
-source ./doug-app.sh
-source ./doug-lib.sh
+source /root/doug/test/utils.sh
+source /root/doug/test/setup.sh
+source /root/doug/test/doug-app.sh
+source /root/doug/test/doug-lib.sh
 
 log "all done :)"

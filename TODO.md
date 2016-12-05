@@ -74,3 +74,7 @@ docker run -t -i node /bin/bash
 docker run -v `pwd`/test:/test -e GIT_BRANCH=master node /bin/bash /test/run.sh
 
 docker run -v `pwd`/test:/test -e GIT_BRANCH=master -t -i node /bin/bash
+
+docker run -v `pwd`:/root/doug node /bin/bash /root/doug/test/run.sh
+
+docker run -v `pwd`:/root/doug -t -i node /bin/bash
