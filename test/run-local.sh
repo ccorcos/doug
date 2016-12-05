@@ -12,7 +12,7 @@ cd $DOUG_ROOT
 make install
 make link
 
-source $DOUG_ROOT/test/doug-app.sh
-source $DOUG_ROOT/test/doug-lib.sh
+source ${DOUG_ROOT}/test/doug-app.sh
+source ${DOUG_ROOT}/test/doug-lib.sh
 
 log "all done :)"

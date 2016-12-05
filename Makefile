@@ -8,14 +8,14 @@ install:
 	./node_modules/.bin/lerna bootstrap
 
 link:
-	cd $DOUG_ROOT/packages/doug-app && npm link
-	cd $DOUG_ROOT/packages/doug-lib && npm link
+	cd ${DOUG_ROOT}/packages/doug-app && npm link
+	cd ${DOUG_ROOT}/packages/doug-lib && npm link
 
 test-ci:
 	make clean
 	make install
 	make link
-	bash $DOUG_ROOT/test/run-ci.sh
+	bash ${DOUG_ROOT}/test/run-ci.sh
 
 install-docker:
 	brew install docker
