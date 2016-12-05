@@ -4,6 +4,9 @@
   - dev test!
 - travis ci
 
+- install phantomjs or does it some with the launcher?
+- doug-app init install colors?
+
 docker run node /bin/bash test/run.sh
 
 - doug-lib
@@ -59,6 +62,7 @@ docker run node /bin/bash test/run.sh
 ```sh
 brew install docker
 brew install boot2docker
+# boot2docker upgrade
 boot2docker init
 boot2docker up
 eval "$(boot2docker shellinit)"
@@ -68,3 +72,5 @@ docker run -t -i node /bin/bash
 ```
 
 docker run -v `pwd`/test:/test -e GIT_BRANCH=master node /bin/bash /test/run.sh
+
+docker run -v `pwd`/test:/test -e GIT_BRANCH=master -t -i node /bin/bash

@@ -1,5 +1,7 @@
 'use strict'
 
+const resolve = require('../resolve')
+
 const publishGit = (dir, options) => {
   // collections shim conflicts with eslint-loader -> object-hash
   // https://github.com/tschaub/gh-pages/issues/42
