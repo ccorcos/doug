@@ -1,13 +1,8 @@
 # To Do
 
-- docker tests with test/run.sh and some way of curling localhost:3000 to verify it worked
-  - dev test!
 - travis ci
-
-- install phantomjs or does it some with the launcher?
+- fix deploy test
 - doug-app init install colors?
-
-docker run node /bin/bash test/run.sh
 
 - doug-lib
   - doug-lib init

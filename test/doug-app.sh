@@ -62,7 +62,8 @@ fi
 test "doug-app dev"
 cd /root/doug-app-test
 doug-app dev &
-TRIES=60
+TRIES=40
+sleep 20
 while true; do
   if [  $TRIES = 0 ]; then
     # kill the background job
@@ -74,7 +75,7 @@ while true; do
   log "trying to curl localhost:3000"
   curl -s http://localhost:3000 -o /root/response.html
   RESULT=`cat /root/response.html | grep '<title>Website</title>'`
-  rm /root/response.html
+  rm -f /root/response.html
   if [ ! $RESULT ]; then
     log "not ready yet"
     let TRIES=TRIES-1

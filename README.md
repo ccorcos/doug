@@ -381,8 +381,21 @@ In review of everything covered so far, let's talk about some key patterns that 
 
 ## Development
 
+If you want to play around with the `doug-app` or `doug-lib` locally:
+
 ```sh
-npm install --global lerna@prerelease
-git clean -fXd
-lerna bootstrap
+make install
+make link
+```
+
+You need Docker to run tests locally:
+
+```sh
+make setup-docker
+```
+
+Then you can run tests:
+
+```sh
+make test-local
 ```
