@@ -1,5 +1,7 @@
 # Doug 🔨🔨🔨
 
+<img src="https://travis-ci.org/ccorcos/doug.svg?branch=master">
+
 Doug is a modular build system that lets you to build your own zero-configuration commandline tools. Doug solves two problems:
 
 - Rather than install `webpack`, `babel`, `karma`, `mocha` and all of the various tools just to get a project up and running, you only need to install one. [`create-react-app`](https://github.com/facebookincubator/create-react-app) is a very popular solution to this problem.

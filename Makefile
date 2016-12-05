@@ -15,7 +15,6 @@ test-ci:
 	make clean
 	make install
 	make link
-	make test-setup
 	bash ${DOUG_ROOT}/test/run-ci.sh
 
 install-docker:
