@@ -9,3 +9,5 @@ npm install -g lerna@prerelease
 lerna bootstrap
 cd ~/doug/packages/doug-app
 npm link
+cd ~/doug/packages/doug-lib
+npm link

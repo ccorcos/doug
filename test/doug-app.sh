@@ -4,6 +4,8 @@ doug-app init doug-app-test
 if [ ! -d ~/doug-app-test ]; then
   error "init did not create a new directory"
 fi
+cd ~/doug-app-test
+npm link doug-app
 
 test "doug-app test"
 cd ~/doug-app-test
