@@ -1,6 +1,6 @@
 {
   "name": "doug",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "dependencies": {
     "assert": "^1.4.1",
     "ava": "^0.17.0",
