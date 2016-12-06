@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const webpack = require('webpack')
 const app = express()
-const resolve = require('../../resolve')
+const resolve = require('doug/resolve')
 
 // parse json all request body
 app.use(bodyParser.json({limit: '50mb'}))

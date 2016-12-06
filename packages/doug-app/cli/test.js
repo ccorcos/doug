@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('doug/commands/test-karma')
+const test = require('../commands/test-karma')
 
 module.exports = (vorpal, config) => {
   vorpal

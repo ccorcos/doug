@@ -8,14 +8,14 @@ module.exports = (config, options) => {
       projectName: config.package.name,
     }),
     {eslint: {envs: ['jasmine']}},
-    require('doug/webpack/istanbul'),
-    require('doug/webpack/css')({
+    require('./partials/istanbul'),
+    require('./partials/css')({
       ignore: true,
     }),
-    require('doug/webpack/assets')({
+    require('./partials/assets')({
       minify: false,
     }),
-    require('doug/webpack/define')(
+    require('./partials/define')(
       { process: { env: { NODE_ENV: 'test' } } }
     ),
     {

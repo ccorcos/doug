@@ -8,24 +8,24 @@ module.exports = (config, options) => {
     require('./base')({
       projectName: config.package.name,
     }),
-    require('doug/webpack/css')({
+    require('./partials/css')({
       ignore: false,
       buildCss: options.buildCss,
     }),
-    require('doug/webpack/assets')({
+    require('./partials/assets')({
       compress: true,
     }),
-    require('doug/webpack/app')({
+    require('./partials/app')({
       html: config.html,
     }),
-    require('doug/webpack/app-build')({
+    require('./partials/app-build')({
       profile: options.profile,
       entry: config.entry,
       rootUrl: options.rootUrl,
     }),
-    options.human ? {} : require('doug/webpack/minify'),
-    require('doug/webpack/optimize'),
-    require('doug/webpack/define')(
+    options.human ? {} : require('./partials/minify'),
+    require('./partials/optimize'),
+    require('./partials/define')(
       { process: { env: { NODE_ENV: 'production' } } }
     )
   )

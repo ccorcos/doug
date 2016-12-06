@@ -1,6 +1,6 @@
 'use strict'
 
-const dev = require('doug/commands/dev')
+const dev = require('../commands/dev')
 
 module.exports = (vorpal, config) => {
   vorpal

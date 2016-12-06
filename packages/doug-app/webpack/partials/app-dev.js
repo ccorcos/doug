@@ -3,7 +3,7 @@
 const path = require('path')
 const merge = require('webpack-merge')
 const R = require('ramda')
-const resolve = require('../resolve')
+const resolve = require('doug/resolve')
 
 module.exports = (config) => ({
   devtool: 'cheap-module-eval-source-map',

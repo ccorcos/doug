@@ -1,6 +1,6 @@
 'use strict'
 
-const deploy = require('doug/commands/deploy-git')
+const deploy = require('../commands/deploy-git')
 
 module.exports = (vorpal, config) => {
   vorpal

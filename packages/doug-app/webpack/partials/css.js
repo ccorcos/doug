@@ -3,7 +3,7 @@
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const Css = new ExtractTextPlugin('[name]-[contenthash].css')
-const resolve = require('../resolve')
+const resolve = require('doug/resolve')
 
 module.exports = (config) => {
   if (config.ignore) {

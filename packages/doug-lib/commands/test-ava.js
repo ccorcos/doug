@@ -1,7 +1,7 @@
 'use strict'
 
 const shell = require('shelljs')
-const resolve = require('../resolve')
+const resolve = require('doug/resolve')
 
 module.exports = {
   options: (vorpal) => {

@@ -1,8 +1,7 @@
 'use strict'
 
 const path = require('path')
-const buildSystemRoot = path.resolve(__dirname, '..')
-const resolve = require('../resolve')
+const resolve = require('doug/resolve')
 
 module.exports = (config) =>({
   resolve: {
@@ -16,8 +15,6 @@ module.exports = (config) =>({
     modulesDirectories: [
       // project
       resolve('node_modules'),
-      // build-system
-      path.join(buildSystemRoot, 'node_modules'),
     ],
   },
   resolveLoader: {
@@ -27,8 +24,6 @@ module.exports = (config) =>({
     modulesDirectories: [
       // project
       resolve('node_modules'),
-      // build-system
-      path.join(buildSystemRoot, 'node_modules'),
     ],
   },
 })

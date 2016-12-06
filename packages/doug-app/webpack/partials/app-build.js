@@ -1,6 +1,6 @@
 'use strict'
 
-const resolve = require('../resolve')
+const resolve = require('doug/resolve')
 const R = require('ramda')
 
 module.exports = (config) => ({

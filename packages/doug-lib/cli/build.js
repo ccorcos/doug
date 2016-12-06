@@ -1,6 +1,6 @@
 'use strict'
 
-const build = require('doug/commands/build-babel')
+const build = require('../commands/build-babel')
 
 module.exports = (vorpal, config) => {
   vorpal

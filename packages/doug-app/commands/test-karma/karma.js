@@ -1,6 +1,6 @@
 'use strict'
 
-const resolve = require('../../resolve')
+const resolve = require('doug/resolve')
 
 module.exports = (config, options, webpackConfig) => {
   return {

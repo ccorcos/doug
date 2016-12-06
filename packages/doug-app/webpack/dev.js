@@ -8,21 +8,21 @@ module.exports = (config, options) => {
     require('./base')({
       projectName: config.package.name,
     }),
-    require('doug/webpack/css')({
+    require('./partials/css')({
       ignore: false,
       buildCss: options.buildCss,
     }),
-    require('doug/webpack/assets')({
+    require('./partials/assets')({
       compress: false,
     }),
-    require('doug/webpack/app')({
+    require('./partials/app')({
       html: config.html,
     }),
-    require('doug/webpack/app-dev')({
+    require('./partials/app-dev')({
       entry: config.entry,
     }),
-    require('doug/webpack/hmr'),
-    require('doug/webpack/define')(
+    require('./partials/hmr'),
+    require('./partials/define')(
       { process: { env: { NODE_ENV: 'dev' } } }
     )
   )

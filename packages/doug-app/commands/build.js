@@ -2,8 +2,8 @@
 
 const shell = require('shelljs')
 const webpack = require('webpack')
-const write = require('../utils/write')
-const resolve = require('../resolve')
+const write = require('doug/utils/write')
+const resolve = require('doug/resolve')
 
 const runWebpack = (webpackConfig) => {
   return new Promise((resolve, reject) => {
