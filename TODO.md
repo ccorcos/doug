@@ -1,10 +1,14 @@
 # To Do
 
-- refactor
-  - move uncommon stuff into doug-app and doug-lib
 - doug-app
   - fix deploy-git
 - doug-cli
+  - init hello doug
+  - build docs
+  - test
+  - release
+  - travis config
+
   - shell utils for testing
   - docker integration
   - travis ci integration
