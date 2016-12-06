@@ -3,84 +3,123 @@
 A zero-configuration build tool for creating React applications.
 
 - [Tutorial](https://github.com/ccorcos/doug)
-- [Example](https://github.com/ccorcos/doug/tree/master/packages/example-app)
 
 ## Quick Start
 
 Create a new project and install `doug-app`.
 
 ```sh
-npm init -y
-npm install --save-dev doug-app
+npm install -g doug-app
+doug-app init awesome-app
+cd awesome-app
+npm start
 ```
 
-Create a few files:
+You can run `doug-app help` to display options.
 
-```js
-// src/index.js
-import React from 'react'
-import ReactDOM from 'react-dom'
+## CLI API
 
-const root = document.getElementById('root')
-ReactDOM.render(<div>Hello World</div>, root)
+When using `doug-app` outside of an application:
+
+```
+❯❯❯ doug-app help
+
+  Commands:
+
+    help [command...]  Provides help for a given command.
+    exit               Exits application.
+    shell              open up a Vorpal shell
+    init [directory]   initialize a new doug-app project
+
+❯❯❯ doug-app help init
+
+  Usage: init [options] [directory]
+
+  initialize a new doug-app project
+
+  Options:
+
+    --help  output usage information
+
 ```
 
-```html
-<!-- src/index.html -->
-<html>
-  <head>
-    <title>Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+When using `doug-app` inside a project:
+
+```
+❯❯❯ doug-app help
+
+  Commands:
+
+    help [command...]  Provides help for a given command.
+    exit               Exits application.
+    shell              open up a Vorpal shell
+    dev [options]      start a development server
+    build [options]    build distribution assets
+    deploy [options]   deploy project using git
+    release <semver>   bump, commit, tag, and push a new release
+    test               run unit tests with karma, mocha, and jsdom
+
+❯❯❯ doug-app help dev
+
+  Usage: dev [options]
+
+  start a development server
+
+  Options:
+
+    --help       output usage information
+    --build-css  build css files
+
+❯❯❯ doug-app help build
+
+  Usage: build [options]
+
+  build distribution assets
+
+  Options:
+
+    --help            output usage information
+    --build-css       build css files
+    --root-url <url>  the base url for the CDN where the assets live
+    --human           do not minify the source files
+    --profile         output the webpack stats.json file for analysis
+
+❯❯❯ doug-app help deploy
+
+  Usage: deploy [options]
+
+  deploy project using git
+
+  Options:
+
+    --help             output usage information
+    --repo <url>       deploy to a repo other than the current repo
+    --remote <remote>  deploy a git remote other than origin
+    --branch <branch>  deploy to a branch other than gh-pages
+
+❯❯❯ doug-app help release
+
+  Usage: release [options] <semver>
+
+  bump, commit, tag, and push a new release
+
+  Options:
+
+    --help  output usage information
+
+❯❯❯ doug-app help test
+
+  Usage: test [options]
+
+  run unit tests with karma, mocha, and jsdom
+
+  Options:
+
+    --help  output usage information
+
 ```
 
-```js
-// src/demo.test.js
-import assert from 'assert'
-
-describe('Test', () => {
-  describe('addition', () => {
-    it('1 + 1 = 2', () => {
-      assert.equal(1 + 1, 2)
-    })
-  })
-})
-```
-
-```js
-// src/demo.text.js
-import assert from 'assert'
-
-describe('Test', () => {
-  describe('addition', () => {
-    it('1 + 1 = 2', () => {
-      assert.equal(1 + 1, 2)
-    })
-  })
-})
-```
-
-```js
-// package.json
-{
-  "scripts": {
-    "start": "doug-app dev",
-    "build": "doug-app build",
-    "deploy": "doug-app deploy",
-    "test": "doug-app test",
-    "release": "doug-app release",
-    "shell": "doug-app shell"
-  }
-}
-```
-
-You can run `npm run-script shell` to open up a Vorpal shell and run commands like `help` or `help test` to more information about the commandline options.
-
-## Configs
+## Config API
 
 #### `html`
 

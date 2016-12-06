@@ -17,19 +17,23 @@ test-ci:
 	make link
 	bash ${DOUG_ROOT}/test/run-ci.sh
 
-install-docker:
+docker-install:
 	brew install docker
 	brew install boot2docker
 	boot2docker upgrade
 
-init-docker:
+docker-init:
 	boot2docker init
 	boot2docker up
 	boot2docker shellinit 1>tmp; . ./tmp; rm ./tmp;
 
-setup-docker:
-	make install-docker
-	make init-docker
+docker-setup:
+	make docker-install
+	make docker-init
+
+docker-clean:
+	docker stop $(docker ps -a -q)
+	docker rm $(docker ps -a -q)
 
 test-local:
 	boot2docker shellinit 1>tmp; . ./tmp; rm ./tmp; docker run -v ${DOUG_ROOT}:/root/doug -e DOUG_ROOT=/root/doug node /bin/bash /root/doug/test/run-local.sh

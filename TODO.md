@@ -1,19 +1,11 @@
 # To Do
 
-- doug-lib
-  - docker tests
 - doug-app
   - fix deploy
-
-- documentation and examples
-  - create tutorial somewhere else
-  - explain global stuff as well
 
 - write
   - how to set up end to end tests inside a docker container
   - how to create your own zero-configuration build tools
-
-
 
 - lerna with yarn https://github.com/lerna/lerna/issues/371
 

@@ -1,6 +1,6 @@
 # Doug 🔨🔨🔨
 
-<img src="https://travis-ci.org/ccorcos/doug.svg?branch=master">
+[![](https://travis-ci.org/ccorcos/doug.svg?branch=master)](https://travis-ci.org/ccorcos/doug)
 
 Doug is a modular build system that lets you to build your own zero-configuration commandline tools. Doug solves two problems:
 
@@ -19,7 +19,7 @@ At it's core, Doug is just a pattern for building commandline tools using [Vorpa
 
 You don't need to use `doug` to create your own zero-configuration build tool, but `doug` does contain some code that will help you get going faster. That said, the internals are so simple I'm going to explain everything in this tutorial.
 
-**Background:** For those less familiar with NPM or programming in general, you can create a ["bin" property in a project's `package.json`](https://docs.npmjs.com/files/package.json#bin) that let's you specify commandline aliases. If you install a package globally (`npm install --global`) then you have access to these commands from the commandline anywhere. But if you install a package as a dependency of a project, you can access them from `node_modules/.bin`. But these scripts are also accessible through the ["scripts" property of a project's `package.json`](https://docs.npmjs.com/misc/scripts). Thus, a Doug tool should [expose a bin script](./packages/doug-app/package.json#L4-6), then we can [alias commands like `npm start` to that script in our projects](./packages/example-app/package.json#L13).
+**Background:** For those less familiar with NPM or programming in general, you can create a ["bin" property in a project's `package.json`](https://docs.npmjs.com/files/package.json#bin) that let's you specify commandline aliases. If you install a package globally (`npm install --global`) then you have access to these commands from the commandline anywhere. But if you install a package as a dependency of a project, you can access them from `node_modules/.bin`. But these scripts are also accessible through the ["scripts" property of a project's `package.json`](https://docs.npmjs.com/misc/scripts). Thus, a Doug tool should [expose a bin script](./packages/doug-app/package.json#L4-6), then we can alias commands like `npm start` to that script in our projects.
 
 ### Hello Doug
 
@@ -49,6 +49,8 @@ Or an easier way is just to use the `doug`:
 ```js
 const config = require('doug/config')
 ```
+
+Using the doug script will also let you use your doug tool when it's globally installed using [`find-root`](https://www.npmjs.com/package/find-root) to resolve your project's root directory.
 
 Another way we want configure build tools is with commandline options. Doug uses [Vorpal](https://github.com/dthree/vorpal) for parsing and validating commandline arguments. Commandline options are usually specific to the command and let's define a command. I recommend breaking up commands into separate files so they're easily reusable if someone else wants to extend your Doug tool.
 
@@ -393,7 +395,7 @@ make link
 You need Docker to run tests locally:
 
 ```sh
-make setup-docker
+make docker-setup
 ```
 
 Then you can run tests:
