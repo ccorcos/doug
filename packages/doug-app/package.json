@@ -1,6 +1,6 @@
 {
   "name": "doug-app",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "bin": {
     "doug-app": "./bin.js"
   },
@@ -15,7 +15,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "body-parser": "^1.15.2",
     "css-loader": "^0.26.0",
-    "doug": "^0.4.0",
+    "doug": "^0.4.2",
     "eslint": "^3.11.1",
     "eslint-config-react-app": "^0.3.0",
     "eslint-loader": "^1.6.1",
