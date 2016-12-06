@@ -7,7 +7,7 @@ module.exports = (vorpal, config) => {
     .command('release <semver>')
     .description('bump, commit, tag, and push a new release')
     .use(release.options)
-    .action((semver, options) => {
+    .action(({semver, options}) => {
       return release.action(config, semver, options)
     })
 }
