@@ -1,23 +1,19 @@
 # To Do
 
-- travis ci
-- fix deploy test
-- doug-app init install colors?
-
 - doug-lib
-  - doug-lib init
   - docker tests
+- doug-app
+  - fix deploy
 
 - documentation and examples
-  - doug-app
-  - doug-lib
-  - tutorials
-    - hello-doug
-    - hello-project
+  - create tutorial somewhere else
+  - explain global stuff as well
 
-- automated tests using docker like yarn does
-- continuous integration with Travis CI
-- flow static typing
+- write
+  - how to set up end to end tests inside a docker container
+  - how to create your own zero-configuration build tools
+
+
 
 - lerna with yarn https://github.com/lerna/lerna/issues/371
 
@@ -66,10 +62,5 @@ docker run -t -i ubuntu /bin/bash
 docker run -t -i node /bin/bash
 ```
 
-docker run -v `pwd`/test:/test -e GIT_BRANCH=master node /bin/bash /test/run.sh
-
-docker run -v `pwd`/test:/test -e GIT_BRANCH=master -t -i node /bin/bash
-
 docker run -v `pwd`:/root/doug node /bin/bash /root/doug/test/run.sh
-
 docker run -v `pwd`:/root/doug -t -i node /bin/bash
