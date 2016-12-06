@@ -1,7 +1,16 @@
 # To Do
 
+- refactor
+  - move uncommon stuff into doug-app and doug-lib
 - doug-app
-  - fix deploy
+  - fix deploy-git
+- doug-cli
+  - shell utils for testing
+  - docker integration
+  - travis ci integration
+  - build documentation
+  - use doug-cli for doug-app and doug-lib
+
 
 - write
   - how to set up end to end tests inside a docker container

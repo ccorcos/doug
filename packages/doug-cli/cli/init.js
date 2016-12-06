@@ -1,0 +1,23 @@
+'use strict'
+
+const path = require('path')
+const init = require('doug/commands/init')
+
+module.exports = (vorpal, config) => {
+  vorpal
+    .command('init [directory]')
+    .description('initialize a new doug-cli project')
+    .use(init.options)
+    .action(({directory}) => {
+      return init.action(
+        directory,
+        {
+          name: "doug-cli-template",
+          version: "0.0.1",
+        },
+        path.resolve(__dirname, '../template'),
+        [],
+        ['doug-cli']
+      )
+    })
+}
