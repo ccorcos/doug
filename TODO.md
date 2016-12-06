@@ -1,5 +1,8 @@
 # To Do
 
+- init
+  - project name from dir / folder name
+
 - doug-app
   - fix deploy-git
 - doug-cli
