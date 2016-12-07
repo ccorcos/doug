@@ -1,0 +1,8 @@
+{
+  "name": "doug-cli",
+  "version": "0.4.2",
+  "bin": {
+    "doug-cli": "./bin.js"
+  },
+  "dependencies": {}
+}
