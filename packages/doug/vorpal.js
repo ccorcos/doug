@@ -10,6 +10,7 @@ const vorpal = require('vorpal')()
 
 vorpal
   .command('shell', 'open up a Vorpal shell')
+  .hidden()
   .action(() => {
     vorpal.show()
     return Promise.resolve()

@@ -1,6 +1,9 @@
 {
   "name": "doug",
   "version": "0.4.2",
+  "script": {
+    "doug": "./bin.js"
+  },
   "dependencies": {
     "find-root": "^1.0.0",
     "shelljs": "^0.7.5",

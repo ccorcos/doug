@@ -1,6 +1,6 @@
 'use strict'
 
-const release = require('doug/commands/release')
+const release = require('../commands/release')
 
 module.exports = (vorpal, config) => {
   vorpal
