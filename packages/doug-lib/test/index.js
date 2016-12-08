@@ -35,14 +35,14 @@ test('doug-lib', (t) => {
     'git push origin master',
   ].join('; '))
 
-  // doug-lib test
-  shell.cd(TESTDIR)
-  shell.exec('doug-lib test')
-
   // doug-lib build
   shell.cd(TESTDIR)
   shell.exec('doug-lib build')
   t.truthy(exists('lib'))
+
+  // doug-lib test
+  shell.cd(TESTDIR)
+  shell.exec('doug-lib test')
 
   // doug-lib release
   const prev = version(TESTDIR)

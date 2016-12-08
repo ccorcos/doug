@@ -1,6 +1,7 @@
 'use strict'
 
 const shell = require('shelljs')
+shell.config.fatal = true
 const webpack = require('webpack')
 const write = require('doug/utils/write')
 const resolve = require('doug/resolve')
