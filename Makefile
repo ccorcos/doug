@@ -1,5 +1,10 @@
 export DOUG_ROOT=${PWD}
 
+docs:
+	cd ${DOUG_ROOT}/packages/doug && doug docs
+	cd ${DOUG_ROOT}/packages/doug-app && doug docs
+	cd ${DOUG_ROOT}/packages/doug-lib && doug docs
+
 clean:
 	git clean -fXd
 

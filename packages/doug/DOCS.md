@@ -2,19 +2,19 @@
 
 ## Commands
 
-- <a href="#help">`help [command...]`</a> Provides help for a given command.
+- <a href="#help-command">`help [command...]`</a> Provides help for a given command.
 - <a href="#exit">`exit`</a> Exits application.
-- <a href="#docs">`docs [options]`</a> generate documentation
+- <a href="#docs-options">`docs [options]`</a> generate documentation
 
-### <a href="#help">`help [command...]`</a>
-
-- `--help` output usage information
-
-### <a href="#exit">`exit`</a>
+### `help [command...]`
 
 - `--help` output usage information
 
-### <a href="#docs">`docs [options]`</a>
+### `exit`
+
+- `--help` output usage information
+
+### `docs [options]`
 
 - `--help` output usage information
 - `-i, --input <input>` the cli entry point file

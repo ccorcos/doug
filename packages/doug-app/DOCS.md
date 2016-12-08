@@ -2,45 +2,45 @@
 
 ## Commands
 
-- <a href="#help">`help [command...]`</a> Provides help for a given command.
+- <a href="#help-command">`help [command...]`</a> Provides help for a given command.
 - <a href="#exit">`exit`</a> Exits application.
-- <a href="#docs">`docs [options]`</a> generate documentation
-- <a href="#init">`init [directory]`</a> initialize a new doug-app project
-- <a href="#dev">`dev [options]`</a> start a development server
+- <a href="#docs-options">`docs [options]`</a> generate documentation
+- <a href="#init-directory">`init [directory]`</a> initialize a new doug-app project
+- <a href="#dev-options">`dev [options]`</a> start a development server
 - <a href="#test">`test`</a> run unit tests with karma, mocha, and jsdom
-- <a href="#build">`build [options]`</a> build distribution assets
-- <a href="#release">`release <semver>`</a> bump, commit, tag, and push a new release
-- <a href="#deploy">`deploy [options]`</a> deploy project using git
+- <a href="#build-options">`build [options]`</a> build distribution assets
+- <a href="#release-<semver>">`release <semver>`</a> bump, commit, tag, and push a new release
+- <a href="#deploy-options">`deploy [options]`</a> deploy project using git
 
-### <a href="#help">`help [command...]`</a>
-
-- `--help` output usage information
-
-### <a href="#exit">`exit`</a>
+### `help [command...]`
 
 - `--help` output usage information
 
-### <a href="#docs">`docs [options]`</a>
+### `exit`
+
+- `--help` output usage information
+
+### `docs [options]`
 
 - `--help` output usage information
 - `-i, --input <input>` the cli entry point file
 - `-d, --defaults <defaults>` the config defaults file
 - `-o, --output <output>` the documentation output file
 
-### <a href="#init">`init [directory]`</a>
+### `init [directory]`
 
 - `--help` output usage information
 
-### <a href="#dev">`dev [options]`</a>
+### `dev [options]`
 
 - `--help` output usage information
 - `--build-css` build css files
 
-### <a href="#test">`test`</a>
+### `test`
 
 - `--help` output usage information
 
-### <a href="#build">`build [options]`</a>
+### `build [options]`
 
 - `--help` output usage information
 - `--build-css` build css files
@@ -48,11 +48,11 @@
 - `--human` do not minify the source files
 - `--profile` output the webpack stats.json file for analysis
 
-### <a href="#release">`release <semver>`</a>
+### `release <semver>`
 
 - `--help` output usage information
 
-### <a href="#deploy">`deploy [options]`</a>
+### `deploy [options]`
 
 - `--help` output usage information
 - `--repo <url>` deploy to a repo other than the current repo

@@ -13,6 +13,7 @@ const h3 = str => `### ${str}`
 const li = str => `- ${str}`
 const code = str => `\`${str}\``
 const href = (link, str) => `<a href="#${link}">${str}</a>`
+const clean = str => str.replace(' ', '-').replace(/[\[\]\/\\\.]/g, '')
 
 module.exports = {
   options: (vorpal) => {
@@ -46,7 +47,7 @@ module.exports = {
       h2(title.replace(':', '')),
       cmds.map(({name, usage, description}) => {
         return [
-          li(href(name, code(usage))),
+          li(href(clean(usage), code(usage))),
           description
         ].join(' ')
       }).join('\n')
@@ -75,7 +76,7 @@ module.exports = {
         })
 
       return [
-        h3(href(name, code(usage))),
+        h3(code(usage)),
         options.map(({name, usage, description}) => {
           return [
             li(code(usage)),
