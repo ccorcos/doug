@@ -13,7 +13,7 @@ const h3 = str => `### ${str}`
 const li = str => `- ${str}`
 const code = str => `\`${str}\``
 const href = (link, str) => `<a href="#${link}">${str}</a>`
-const clean = str => str.replace(' ', '-').replace(/[\[\]\/\\\.]/g, '')
+const clean = str => str.replace(' ', '-').replace(/[\[\]\/\\\.\<\>]/g, '')
 
 module.exports = {
   options: (vorpal) => {

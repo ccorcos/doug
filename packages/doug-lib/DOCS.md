@@ -8,7 +8,7 @@
 - <a href="#init-directory">`init [directory]`</a> initialize a new doug-lib project
 - <a href="#test">`test`</a> run unit tests with ava
 - <a href="#build">`build`</a> build distribution assets with babel
-- <a href="#release-<semver>">`release <semver>`</a> bump, commit, tag, and push a new release
+- <a href="#release-semver">`release <semver>`</a> bump, commit, tag, and push a new release
 
 ### `help [command...]`
 

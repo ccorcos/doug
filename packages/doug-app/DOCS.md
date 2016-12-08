@@ -9,7 +9,7 @@
 - <a href="#dev-options">`dev [options]`</a> start a development server
 - <a href="#test">`test`</a> run unit tests with karma, mocha, and jsdom
 - <a href="#build-options">`build [options]`</a> build distribution assets
-- <a href="#release-<semver>">`release <semver>`</a> bump, commit, tag, and push a new release
+- <a href="#release-semver">`release <semver>`</a> bump, commit, tag, and push a new release
 - <a href="#deploy-options">`deploy [options]`</a> deploy project using git
 
 ### `help [command...]`
