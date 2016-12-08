@@ -3,16 +3,9 @@
 set -e
 set -o pipefail
 
-# some formatted logging commands
-function log() { echo "LOG: $@"; }
-function test() { echo "TEST: $@"; }
-function error() { echo "ERROR: $@"; exit 1; }
-
 cd $DOUG_ROOT
-make install
+# make clean
+# make install
 make link
 
-source ${DOUG_ROOT}/test/doug-app.sh
-source ${DOUG_ROOT}/test/doug-lib.sh
-
-log "all done :)"
+./node_modules/.bin/ava ${DOUG_ROOT}/packages/*/test/index.js

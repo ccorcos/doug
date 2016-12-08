@@ -1,6 +1,7 @@
 import test from 'ava'
 import shell from 'shelljs'
 import exists from 'doug/utils/exists'
+import version from 'doug/utils/version'
 
 shell.config.fatal = true
 
@@ -12,7 +13,7 @@ test('doug-app', (t) => {
   const TESTDIR = '~/doug-app-test'
 
   // link doug-app
-  shell.cd(TESTDIR})
+  shell.cd(TESTDIR)
   shell.exec('npm link doug-app')
 
   // setup local git origin
@@ -50,25 +51,23 @@ test('doug-app', (t) => {
   // // check that a gh_pages branch was created
   // t.truthy(shell.exec('git branch | grep gh_pages').stdout.trim())
 
-  const version = () => shell.cat('~/doug-app-test/package.json').grep(/"version"/).match(/(version": ?")([^"]+)/)[2]
-
   // doug-app release
-  const prev = version()
+  const prev = version(TESTDIR)
   shell.cd(TESTDIR)
   shell.exec('doug-app release minor')
-  const next = version()
+  const next = version(TESTDIR)
   t.not(prev, next)
   shell.cd(ORIGINDIR)
   // check that the tag was pushed
-  shell.truthy(shell.exec(`git tag | grep ${next}`).trim())
+  t.truthy(shell.exec(`git tag | grep ${next}`).trim())
 
   // doug-app dev
   shell.cd(TESTDIR)
   const child = shell.exec('doug-app dev', {async: true})
-  const tries = 50
+  let tries = 50
   shell.exec('sleep 10')
   while(tries > 0) {
-    const result = shell.exec('curl http://localhost:3000').stdout.trim()
+    const result = shell.exec('curl -sL http://localhost:3000 || exit 0').stdout.trim()
     if (result.match(/<title>Website<\/title>/)) {
       break;
     }

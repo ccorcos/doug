@@ -1,6 +1,7 @@
 import test from 'ava'
 import shell from 'shelljs'
 import exists from 'doug/utils/exists'
+import version from 'doug/utils/version'
 
 shell.config.fatal = true
 
@@ -12,7 +13,7 @@ test('doug-lib', (t) => {
   const TESTDIR = '~/doug-lib-test'
 
   // link doug-lib
-  shell.cd(TESTDIR})
+  shell.cd(TESTDIR)
   shell.exec('npm link doug-lib')
 
   // setup local git origin
@@ -44,12 +45,12 @@ test('doug-lib', (t) => {
   t.truthy(exists('lib'))
 
   // doug-lib release
-  const prev = version()
+  const prev = version(TESTDIR)
   shell.cd(TESTDIR)
   shell.exec('doug-lib release minor')
-  const next = version()
+  const next = version(TESTDIR)
   t.not(prev, next)
   shell.cd(ORIGINDIR)
   // check that the tag was pushed
-  shell.truthy(shell.exec(`git tag | grep ${next}`).trim())
+  t.truthy(shell.exec(`git tag | grep ${next}`).trim())
 })
