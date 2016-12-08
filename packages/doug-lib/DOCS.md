@@ -1,12 +1,14 @@
+<!-- THIS FILE IS GENERATED -->
+
 ## Commands
 
-- [`help [command...]`][#help] Provides help for a given command.
-- [`exit`][#exit] Exits application.
-- [`docs [options]`][#docs] generate documentation
-- [`init [directory]`][#init] initialize a new doug-lib project
-- [`test`][#test] run unit tests with ava
-- [`build`][#build] build distribution assets with babel
-- [`release <semver>`][#release] bump, commit, tag, and push a new release
+- <a href="#help">`help [command...]`</a> Provides help for a given command.
+- <a href="#exit">`exit`</a> Exits application.
+- <a href="#docs">`docs [options]`</a> generate documentation
+- <a href="#init">`init [directory]`</a> initialize a new doug-lib project
+- <a href="#test">`test`</a> run unit tests with ava
+- <a href="#build">`build`</a> build distribution assets with babel
+- <a href="#release">`release <semver>`</a> bump, commit, tag, and push a new release
 
 ### <a href="#help">`help [command...]`</a>
 

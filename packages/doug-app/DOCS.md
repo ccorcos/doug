@@ -1,14 +1,16 @@
+<!-- THIS FILE IS GENERATED -->
+
 ## Commands
 
-- [`help [command...]`][#help] Provides help for a given command.
-- [`exit`][#exit] Exits application.
-- [`docs [options]`][#docs] generate documentation
-- [`init [directory]`][#init] initialize a new doug-app project
-- [`dev [options]`][#dev] start a development server
-- [`test`][#test] run unit tests with karma, mocha, and jsdom
-- [`build [options]`][#build] build distribution assets
-- [`release <semver>`][#release] bump, commit, tag, and push a new release
-- [`deploy [options]`][#deploy] deploy project using git
+- <a href="#help">`help [command...]`</a> Provides help for a given command.
+- <a href="#exit">`exit`</a> Exits application.
+- <a href="#docs">`docs [options]`</a> generate documentation
+- <a href="#init">`init [directory]`</a> initialize a new doug-app project
+- <a href="#dev">`dev [options]`</a> start a development server
+- <a href="#test">`test`</a> run unit tests with karma, mocha, and jsdom
+- <a href="#build">`build [options]`</a> build distribution assets
+- <a href="#release">`release <semver>`</a> bump, commit, tag, and push a new release
+- <a href="#deploy">`deploy [options]`</a> deploy project using git
 
 ### <a href="#help">`help [command...]`</a>
 

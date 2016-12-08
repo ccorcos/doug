@@ -11,7 +11,6 @@ const h1 = str => `# ${str}`
 const h2 = str => `## ${str}`
 const h3 = str => `### ${str}`
 const li = str => `- ${str}`
-const anchor = (link, str) => `[${str}][#${link}]`
 const code = str => `\`${str}\``
 const href = (link, str) => `<a href="#${link}">${str}</a>`
 
@@ -47,7 +46,7 @@ module.exports = {
       h2(title.replace(':', '')),
       cmds.map(({name, usage, description}) => {
         return [
-          li(anchor(name, code(usage))),
+          li(href(name, code(usage))),
           description
         ].join(' ')
       }).join('\n')
@@ -100,6 +99,7 @@ module.exports = {
     write(
       resolve(options.output || config.output),
       [
+        '<!-- THIS FILE IS GENERATED -->',
         TOC,
         CONTENT,
         CONFIG,

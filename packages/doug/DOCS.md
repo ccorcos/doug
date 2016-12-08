@@ -1,8 +1,10 @@
+<!-- THIS FILE IS GENERATED -->
+
 ## Commands
 
-- [`help [command...]`][#help] Provides help for a given command.
-- [`exit`][#exit] Exits application.
-- [`docs [options]`][#docs] generate documentation
+- <a href="#help">`help [command...]`</a> Provides help for a given command.
+- <a href="#exit">`exit`</a> Exits application.
+- <a href="#docs">`docs [options]`</a> generate documentation
 
 ### <a href="#help">`help [command...]`</a>
 
