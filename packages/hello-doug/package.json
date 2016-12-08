@@ -1,11 +1,11 @@
 {
   "name": "hello-doug",
   "private": true,
-  "version": "0.4.2",
+  "version": "0.5.0",
   "bin": {
     "hello-doug": "./bin.js"
   },
   "devDependencies": {
-    "doug": "^0.4.2"
+    "doug": "^0.5.0"
   }
 }

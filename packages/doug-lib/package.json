@@ -1,6 +1,6 @@
 {
   "name": "doug-lib",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "bin": {
     "doug-lib": "./bin.js"
   },
@@ -10,7 +10,7 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
-    "doug": "^0.4.2",
+    "doug": "^0.5.0",
     "shelljs": "^0.7.5"
   }
 }

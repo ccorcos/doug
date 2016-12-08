@@ -1,11 +1,11 @@
 {
   "name": "hello-project",
   "private": true,
-  "version": "0.4.2",
+  "version": "0.5.0",
   "scripts": {
     "start": "hello-doug hello"
   },
   "devDependencies": {
-    "hello-doug": "^0.4.2"
+    "hello-doug": "^0.5.0"
   }
 }
