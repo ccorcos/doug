@@ -10,34 +10,35 @@
 - [`release <semver>`][#release] bump, commit, tag, and push a new release
 - [`deploy [options]`][#deploy] deploy project using git
 
-## <a href="#help">`help [command...]`</a>
+### <a href="#help">`help [command...]`</a>
 
 - `--help` output usage information
 
-## <a href="#exit">`exit`</a>
+### <a href="#exit">`exit`</a>
 
 - `--help` output usage information
 
-## <a href="#docs">`docs [options]`</a>
+### <a href="#docs">`docs [options]`</a>
 
 - `--help` output usage information
 - `-i, --input <input>` the cli entry point file
+- `-d, --defaults <defaults>` the config defaults file
 - `-o, --output <output>` the documentation output file
 
-## <a href="#init">`init [directory]`</a>
+### <a href="#init">`init [directory]`</a>
 
 - `--help` output usage information
 
-## <a href="#dev">`dev [options]`</a>
+### <a href="#dev">`dev [options]`</a>
 
 - `--help` output usage information
 - `--build-css` build css files
 
-## <a href="#test">`test`</a>
+### <a href="#test">`test`</a>
 
 - `--help` output usage information
 
-## <a href="#build">`build [options]`</a>
+### <a href="#build">`build [options]`</a>
 
 - `--help` output usage information
 - `--build-css` build css files
@@ -45,13 +46,25 @@
 - `--human` do not minify the source files
 - `--profile` output the webpack stats.json file for analysis
 
-## <a href="#release">`release <semver>`</a>
+### <a href="#release">`release <semver>`</a>
 
 - `--help` output usage information
 
-## <a href="#deploy">`deploy [options]`</a>
+### <a href="#deploy">`deploy [options]`</a>
 
 - `--help` output usage information
 - `--repo <url>` deploy to a repo other than the current repo
 - `--remote <remote>` deploy a git remote other than origin
 - `--branch <branch>` deploy to a branch other than gh-pages
+
+## Defaults
+
+```js
+module.exports = {
+  html: './src/index.html',
+  entry: {
+    index: './src/index.js',
+  },
+  test: './test.js',
+}
+```

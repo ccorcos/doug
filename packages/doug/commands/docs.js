@@ -3,6 +3,7 @@
 const path = require('path')
 const write = require('../utils/write')
 const resolve = require('../resolve')
+const shell = require('shelljs')
 
 const trim = str => str.trim()
 const empty = str => str !== ''
@@ -18,6 +19,7 @@ module.exports = {
   options: (vorpal) => {
     return vorpal
       .option('-i, --input <input>', 'the cli entry point file')
+      .option('-d, --defaults <defaults>', 'the config defaults file')
       .option('-o, --output <output>', 'the documentation output file')
   },
   action: (config, options) => {
@@ -74,7 +76,7 @@ module.exports = {
         })
 
       return [
-        h2(href(name, code(usage))),
+        h3(href(name, code(usage))),
         options.map(({name, usage, description}) => {
           return [
             li(code(usage)),
@@ -84,12 +86,24 @@ module.exports = {
       ].join('\n\n')
     }).join('\n\n')
 
+    const CONFIG = [
+      h2('Defaults'),
+      [
+        '```js',
+        shell.cat(resolve(options.defaults || config.defaults)).stdout
+          .replace("'use strict'", '')
+          .trim(),
+        '```',
+      ].join('\n')
+    ].join('\n\n')
+
     write(
       resolve(options.output || config.output),
       [
         TOC,
         CONTENT,
-      ].join('\n\n')
+        CONFIG,
+      ].join('\n\n') + '\n'
     )
   }
 }

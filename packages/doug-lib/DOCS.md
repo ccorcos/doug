@@ -8,32 +8,42 @@
 - [`build`][#build] build distribution assets with babel
 - [`release <semver>`][#release] bump, commit, tag, and push a new release
 
-## <a href="#help">`help [command...]`</a>
+### <a href="#help">`help [command...]`</a>
 
 - `--help` output usage information
 
-## <a href="#exit">`exit`</a>
+### <a href="#exit">`exit`</a>
 
 - `--help` output usage information
 
-## <a href="#docs">`docs [options]`</a>
+### <a href="#docs">`docs [options]`</a>
 
 - `--help` output usage information
 - `-i, --input <input>` the cli entry point file
+- `-d, --defaults <defaults>` the config defaults file
 - `-o, --output <output>` the documentation output file
 
-## <a href="#init">`init [directory]`</a>
+### <a href="#init">`init [directory]`</a>
 
 - `--help` output usage information
 
-## <a href="#test">`test`</a>
+### <a href="#test">`test`</a>
 
 - `--help` output usage information
 
-## <a href="#build">`build`</a>
+### <a href="#build">`build`</a>
 
 - `--help` output usage information
 
-## <a href="#release">`release <semver>`</a>
+### <a href="#release">`release <semver>`</a>
 
 - `--help` output usage information
+
+## Defaults
+
+```js
+module.exports = {
+  src: './src',
+  test: './lib/**/*.test.js',
+}
+```
