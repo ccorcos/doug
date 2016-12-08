@@ -16,6 +16,9 @@ if (resolve.root) {
   require('./cli/init')(vorpal, config)
 }
 
-vorpal
-  .delimiter('doug-app ❯❯❯')
-  .parse(process.argv)
+if (require.main === module) {
+  // if run through the commandline
+  vorpal
+    .delimiter('doug-app ❯❯❯')
+    .parse(process.argv)
+}

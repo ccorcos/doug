@@ -14,6 +14,9 @@ if (resolve.root) {
   require('./cli/init')(vorpal, config)
 }
 
-vorpal
-  .delimiter('doug-lib ❯❯❯')
-  .parse(process.argv)
+if (require.main === module) {
+  // if run through the commandline
+  vorpal
+    .delimiter('doug-lib ❯❯❯')
+    .parse(process.argv)
+}
