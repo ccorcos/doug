@@ -32,8 +32,8 @@ docker-setup:
 	make docker-init
 
 docker-clean:
-	docker stop $(docker ps -a -q)
-	docker rm $(docker ps -a -q)
+	boot2docker shellinit 1>tmp; . ./tmp; rm ./tmp; docker stop $(docker ps -a -q)
+	boot2docker shellinit 1>tmp; . ./tmp; rm ./tmp; docker rm $(docker ps -a -q)
 
 test-local:
 	boot2docker shellinit 1>tmp; . ./tmp; rm ./tmp; docker run -v ${DOUG_ROOT}:/root/doug -e DOUG_ROOT=/root/doug node /bin/bash /root/doug/test/run-local.sh

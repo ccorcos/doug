@@ -3,12 +3,5 @@
 set -e
 set -o pipefail
 
-# some formatted logging commands
-function log() { echo "LOG: $@"; }
-function test() { echo "TEST: $@"; }
-function error() { echo "ERROR: $@"; exit 1; }
-
-source ${DOUG_ROOT}/test/doug-app.sh
-source ${DOUG_ROOT}/test/doug-lib.sh
-
-log "all done :)"
+cd ${DOUG_ROOT}
+./node_modules/.bin/ava ${DOUG_ROOT}/packages/*/test/index.js

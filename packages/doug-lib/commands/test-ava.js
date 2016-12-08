@@ -1,6 +1,7 @@
 'use strict'
 
 const shell = require('shelljs')
+shell.config.fatal = true
 const resolve = require('doug/resolve')
 
 module.exports = {
