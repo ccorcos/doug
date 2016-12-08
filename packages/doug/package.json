@@ -1,7 +1,7 @@
 {
   "name": "doug",
   "version": "0.4.2",
-  "script": {
+  "bin": {
     "doug": "./bin.js"
   },
   "dependencies": {

@@ -42,7 +42,7 @@ module.exports = {
       })
 
     const TOC = [
-      h1(title.replace(':', '')),
+      h2(title.replace(':', '')),
       cmds.map(({name, usage, description}) => {
         return [
           li(anchor(name, code(usage))),
@@ -74,7 +74,7 @@ module.exports = {
         })
 
       return [
-        h3(href(name, code(usage))),
+        h2(href(name, code(usage))),
         options.map(({name, usage, description}) => {
           return [
             li(code(usage)),
@@ -88,7 +88,6 @@ module.exports = {
       resolve(options.output || config.output),
       [
         TOC,
-        h2('CLI API'),
         CONTENT,
       ].join('\n\n')
     )
