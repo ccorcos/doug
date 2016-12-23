@@ -3,12 +3,13 @@
 const shell = require('shelljs')
 shell.config.fatal = true
 const resolve = require('doug/resolve')
+const resolveBin = require('resolve-bin')
 
 module.exports = {
   options: (vorpal) => {
     return vorpal
   },
   action: (config, options) => {
-    return shell.exec(`${__dirname}/../node_modules/.bin/ava ${resolve(config.test)}`)
+    return shell.exec(`${resolveBin('ava')} ${resolve(config.test)}`)
   },
 }

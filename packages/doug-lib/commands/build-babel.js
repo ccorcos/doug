@@ -3,7 +3,7 @@
 const shell = require('shelljs')
 shell.config.fatal = true
 const resolve = require('doug/resolve')
-const modulesDir = `${__dirname}/../node_modules`
+const resolveBin = require('resolve-bin')
 
 module.exports = {
   options: (vorpal) => {
@@ -11,9 +11,9 @@ module.exports = {
   },
   action: (config, options) => {
     return shell.exec([
-      `${modulesDir}/.bin/babel ${config.src}`,
+      `${resolveBin('babel-cli', {executable:'babel'})} ${config.src}`,
       `--out-dir ${resolve('lib')}`,
-      `--presets=${modulesDir}/babel-preset-es2015,${modulesDir}/babel-preset-react,${modulesDir}/babel-preset-stage-0`
+      `--presets=${require.resolve('babel-preset-es2015')},${require.resolve('babel-preset-react')},${require.resolve('babel-preset-stage-0')}`
     ].join(' '))
   },
 }
