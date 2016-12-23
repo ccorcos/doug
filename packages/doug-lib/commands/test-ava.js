@@ -3,7 +3,7 @@
 const shell = require('shelljs')
 shell.config.fatal = true
 const resolve = require('doug/resolve')
-const resolveBin = require('resolve-bin')
+const resolveBin = require('resolve-bin').sync
 
 module.exports = {
   options: (vorpal) => {
